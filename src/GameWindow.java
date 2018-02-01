@@ -13,6 +13,7 @@ public class GameWindow extends JFrame {
 
     public GameWindow() {
         this.setContentPane(gameCanvas);
+        gameCanvas.setPreferredSize(new Dimension(800,800));
 
         this.pack();
         this.event();
@@ -20,8 +21,7 @@ public class GameWindow extends JFrame {
     }
 
     private void event() {
-        this.addMouseListener(MouseInput.instance);
-        this.addMouseMotionListener(MouseMotionInput.instance);
+        //mouse input in gameCanvas for precision
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
