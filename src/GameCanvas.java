@@ -3,6 +3,7 @@ import input.MouseInput;
 import input.MouseMotionInput;
 import scene.GamePlayScene;
 import scene.SceneManager;
+import tilemap.Map;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,6 +18,7 @@ public class GameCanvas extends JPanel {
         this.setupBackBuffered();
         this.setupCursor();
         SceneManager.instance.changeScene(new GamePlayScene());
+
         this.setVisible(true);
     }
 

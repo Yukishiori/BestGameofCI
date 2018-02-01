@@ -3,12 +3,15 @@ package scene;
 import core.GameObjectManager;
 import game.background.Background;
 import game.player.Player;
+import tilemap.Map;
 
 public class GamePlayScene implements Scene {
     @Override
     public void init() {
         setupBackround();
         setupPlayer();
+        Map map = new Map();
+        map.drawMap();
     }
 
     @Override
@@ -17,7 +20,7 @@ public class GamePlayScene implements Scene {
     }
 
     private void setupPlayer() {
-        System.out.println("Wat");
+
         GameObjectManager.instance.recycle(Player.class);
     }
 
