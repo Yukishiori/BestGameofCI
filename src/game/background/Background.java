@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class Background extends GameObject{
     public Background() {
-        this.renderer = new ImageRenderer(".idea/Assets/blankbackground.png");
+        this.renderer = new ImageRenderer("Assets/background2.png");
         this.position.set(0,0);
     }
 

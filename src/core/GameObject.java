@@ -16,6 +16,8 @@ public class GameObject {
     public GameObject() {
         this.position = new Vector2D();
         this.isAlive = false;
+        this.actions = new Vector<>();
+        this.newActions = new Vector<>();
     }
     public void run() {
         this.actions.removeIf(action -> action.run(this));

@@ -12,10 +12,10 @@ public class GameWindow extends JFrame {
     GameCanvas gameCanvas = new GameCanvas();
 
     public GameWindow() {
-        this.setContentPane(gameCanvas);
-        gameCanvas.setPreferredSize(new Dimension(800,800));
-
-        this.pack();
+//        this.getContentPane().setPreferredSize(new Dimension(800,800));
+//        this.pack();
+        this.setSize(800, 800);
+        this.add(gameCanvas);
         this.event();
         this.setVisible(true);
     }

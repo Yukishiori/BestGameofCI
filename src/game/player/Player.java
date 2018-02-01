@@ -12,10 +12,10 @@ public class Player extends GameObject implements PhysicBody{
     public BoxCollider boxCollider;
 
     public Player() {
-        this.renderer = new ImageRenderer(".idea/Assets/player.png");
+        this.renderer = new ImageRenderer("Assets/player.png");
         this.isAlive = true;
+        this.position.set(200, 200);
         this.boxCollider = new BoxCollider(50,50);
-
     }
 
     @Override
