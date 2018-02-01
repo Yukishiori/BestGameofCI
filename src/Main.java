@@ -1,5 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Begin");
+        GameWindow gameWindow = new GameWindow();
+        gameWindow.gameLoop();
     }
 }
