@@ -3,7 +3,6 @@ import input.MouseInput;
 import input.MouseMotionInput;
 import scene.GamePlayScene;
 import scene.SceneManager;
-import tilemap.Map;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +13,6 @@ public class GameCanvas extends JPanel {
     Graphics graphics;
 
     public GameCanvas() {
-//        this.setPreferredSize(new Dimension(800,800));
         this.setupBackBuffered();
         this.setupCursor();
         SceneManager.instance.changeScene(new GamePlayScene());

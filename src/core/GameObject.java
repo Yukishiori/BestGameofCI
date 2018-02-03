@@ -15,7 +15,7 @@ public class GameObject {
 
     public GameObject() {
         this.position = new Vector2D();
-        this.isAlive = false;
+        this.isAlive = true;
         this.actions = new Vector<>();
         this.newActions = new Vector<>();
     }

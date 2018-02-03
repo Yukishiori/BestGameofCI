@@ -13,17 +13,20 @@ public class Player extends GameObject implements PhysicBody, HitObject {
 
     public BoxCollider boxCollider;
     public static Vector2D velocity = new Vector2D();
+    private HitWall hitWall = new HitWall();
     public Player() {
         this.renderer = new ImageRenderer("Assets/player.png");
         this.isAlive = true;
         this.position.set(200, 200);
         this.boxCollider = new BoxCollider(50,50);
+
     }
 
     @Override
     public void run() {
         super.run();
         this.boxCollider.position.set(this.position);
+
 
     }
 

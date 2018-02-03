@@ -14,4 +14,9 @@ public class RunHitObject<O extends GameObject & HitObject> {
             object.getHit(gameObject);
         }
     }
+
+    public RunHitObject(Class<O> cls) {
+        this.cls = cls;
+    }
+
 }
