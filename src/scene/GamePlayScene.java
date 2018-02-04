@@ -29,9 +29,10 @@ public class GamePlayScene implements Scene {
 
     private void setupPlayer() {
 
-        GameObjectManager.instance.recycle(Player.class);
-        Wall wall = GameObjectManager.instance.recycle(Wall.class);
-        wall.position.set(0, 0);
+        Player player = GameObjectManager.instance.recycle(Player.class);
+
+//        Wall wall = GameObjectManager.instance.recycle(Wall.class);
+//        wall.position.set(0, 0);
     }
 
     private void setupBackround() {

@@ -17,17 +17,14 @@ public class Player extends GameObject implements PhysicBody, HitObject {
     public Player() {
         this.renderer = new ImageRenderer("Assets/player.png");
         this.isAlive = true;
-        this.position.set(200, 200);
+        this.position.set(400, 380);
         this.boxCollider = new BoxCollider(50,50);
-
     }
 
     @Override
     public void run() {
         super.run();
-        this.boxCollider.position.set(this.position);
-
-
+        this.boxCollider.position.addUp(this.position);
     }
 
     @Override
@@ -37,6 +34,7 @@ public class Player extends GameObject implements PhysicBody, HitObject {
 
     @Override
     public void getHit(GameObject gameObject) {
+//        System.out.println("ff");
         this.isAlive = false;
 
     }
