@@ -2,7 +2,10 @@ package game.cursor;
 
 import constants.Constant;
 import core.GameObject;
+import game.portal.PortalIn;
+import game.portal.PrePortal;
 import hit.HitObject;
+import input.MouseInput;
 import input.MouseMotionInput;
 import physics.BoxCollider;
 import physics.PhysicBody;
@@ -27,7 +30,7 @@ public class Cursor extends GameObject implements PhysicBody, HitObject {
         this.boxCollider.position.set(this.position);
 //        this.makePortal.run();
         hitInvisibleBlock.run(this);
-
+        this.makePortal();
     }
 
     @Override
@@ -39,5 +42,13 @@ public class Cursor extends GameObject implements PhysicBody, HitObject {
     @Override
     public void getHit(GameObject gameObject) {
 
+    }
+
+    private void makePortal() {
+
+        if (MouseInput.instance.leftMouse && PrePortal.instance.position != null) {
+            PortalIn.instance.position.set(PrePortal.instance.position);
+            PortalIn.instance.config(PrePortal.instance.face);
+        }
     }
 }

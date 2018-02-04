@@ -42,9 +42,9 @@ public class Constant {
     }
 
     public static class PortalIn {
-        public static final int WIDTH = 100;
-        public static final int HEIGHT = 25;
-        public static String PATH_HORI = "Assets/portalin_horizontal.png";
-        public static String PATH_VERT = "Assets/portalin_vertical.png";
+        //        public static final int WIDTH = 100;
+//        public static final int HEIGHT = 25;
+        public static String PATH_HORI = "Assets/portalin2_hori.png";
+        public static String PATH_VERT = "Assets/portalin2_vert.png";
     }
 }
