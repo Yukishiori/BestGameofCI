@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
 
 public class GameWindow extends JFrame {
 
@@ -18,6 +19,7 @@ public class GameWindow extends JFrame {
         this.add(gameCanvas);
         this.event();
         this.setVisible(true);
+        hideCursor();
     }
 
     private void event() {
@@ -28,6 +30,12 @@ public class GameWindow extends JFrame {
                 System.exit(1);
             }
         });
+    }
+
+    private void hideCursor() {
+        BufferedImage cursorImg = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);
+        Cursor cursor = Toolkit.getDefaultToolkit().createCustomCursor(cursorImg, new Point(0, 0), "blank cursor");
+        this.getContentPane().setCursor(cursor);
     }
 
     public void gameLoop() {

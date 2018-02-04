@@ -13,12 +13,14 @@ public class PortalOut extends GameObject {
     public Vector2D transferVelocity;
     private ImageRenderer vertImage = new ImageRenderer(Constant.PortalOut.PATH_VERT);
     private ImageRenderer horiImage = new ImageRenderer(Constant.PortalOut.PATH_HORI);
-
+    private int face;
     public PortalOut() {
         this.transferVelocity = new Vector2D();
+
     }
 
     public void config(int face) {
+        this.face = face;
         if (face == 2) {
             this.renderer = vertImage;
             this.transferVelocity.set(-3, 0);
@@ -34,8 +36,18 @@ public class PortalOut extends GameObject {
         }
 
     }
-//    public Vector2D getCenterPosition() {
-//        return this.position +
-//    }
+
+    public Vector2D getCenterPosition() {
+        if (this.face == 2) {
+            return new Vector2D(this.position.x - 6, this.position.y + 10);
+        } else if (this.face == 3) {
+            return new Vector2D(this.position.x + 10, this.position.y - 6);
+        } else if (this.face == 4) {
+            return new Vector2D(this.position.x + 6, this.position.y + 10);
+        } else if (this.face == 5) {
+            return new Vector2D(this.position.x + 10, this.position.y + 6);
+        }
+        return null;
+    }
 
 }

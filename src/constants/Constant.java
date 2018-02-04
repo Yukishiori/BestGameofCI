@@ -14,7 +14,7 @@ public class Constant {
     }
 
     public static class Cursor {
-        public static final String PATH = "Assets/cursor.png";
+        public static final String PATH = "Assets/cursor2.png";
         public static final int WIDTH = 30;
         public static final int HEIGHT = 30;
 
@@ -22,8 +22,8 @@ public class Constant {
 
     public static class TileMap {
         public static final int[][] map1 = new int[][]{
-                {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0},
-                {0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 0},
+                {0, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 0},
+                {3, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0, 3},
                 {1, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1},
                 {1, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1},
                 {1, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1},
@@ -36,8 +36,8 @@ public class Constant {
                 {1, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1},
                 {1, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1},
                 {1, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1},
-                {0, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 0},
-                {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0},
+                {5, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0, 5},
+                {0, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 0},
         };
     }
 
@@ -51,5 +51,9 @@ public class Constant {
     public static class PortalOut {
         public static String PATH_HORI = "Assets/portalout2_hori.png";
         public static String PATH_VERT = "Assets/portalout2_vert.png";
+    }
+
+    public static class Coin {
+        public static String PATH = "Assets/coin.png";
     }
 }

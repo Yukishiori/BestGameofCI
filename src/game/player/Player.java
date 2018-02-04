@@ -40,7 +40,7 @@ public class Player extends GameObject implements PhysicBody, HitObject {
         System.out.println("Lul");
         if (gameObject instanceof PortalIn) {
             if (PortalOut.instance.position != null) {
-                this.position.set(PortalOut.instance.position);
+                this.position.set(PortalOut.instance.getCenterPosition());
                 this.velocity.set(PortalOut.instance.transferVelocity);
             }
         } else {

@@ -31,7 +31,7 @@ public class GamePlayScene implements Scene {
 
         Player player = GameObjectManager.instance.recycle(Player.class);
         player.position.set(200, 200);
-        player.velocity.set(1, 0);
+        player.velocity.set(3, 0);
 //        Wall wall = GameObjectManager.instance.recycle(Wall.class);
 //        wall.position.set(0, 0);
     }
