@@ -3,6 +3,7 @@ package game.cursor;
 import constants.Constant;
 import core.GameObject;
 import game.portal.PortalIn;
+import game.portal.PortalOut;
 import game.portal.PrePortal;
 import hit.HitObject;
 import input.MouseInput;
@@ -49,6 +50,12 @@ public class Cursor extends GameObject implements PhysicBody, HitObject {
         if (MouseInput.instance.leftMouse && PrePortal.instance.position != null) {
             PortalIn.instance.position.set(PrePortal.instance.position);
             PortalIn.instance.config(PrePortal.instance.face);
+            MouseInput.instance.leftMouse = false;
+        }
+        if (MouseInput.instance.rightMouse && PrePortal.instance.position != null) {
+            PortalOut.instance.position.set(PrePortal.instance.position);
+            PortalOut.instance.config(PrePortal.instance.face);
+            MouseInput.instance.rightMouse = false;
         }
     }
 }

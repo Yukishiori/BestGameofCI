@@ -47,4 +47,9 @@ public class Constant {
         public static String PATH_HORI = "Assets/portalin2_hori.png";
         public static String PATH_VERT = "Assets/portalin2_vert.png";
     }
+
+    public static class PortalOut {
+        public static String PATH_HORI = "Assets/portalout2_hori.png";
+        public static String PATH_VERT = "Assets/portalout2_vert.png";
+    }
 }

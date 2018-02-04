@@ -1,14 +1,16 @@
 package game.player;
 
+import game.portal.PortalIn;
 import game.wall.Wall;
 import hit.RunHitObject;
 
-public class HitWall {
+public class PlayerHitObject {
     private RunHitObject[] arrays;
 
-    public HitWall() {
+    public PlayerHitObject() {
         this.arrays = new RunHitObject[]{
                 new RunHitObject(Wall.class),
+                new RunHitObject(PortalIn.class)
 //                new RunHitObject(PortalIn.class)
         };
     }

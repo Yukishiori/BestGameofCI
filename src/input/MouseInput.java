@@ -38,13 +38,9 @@ public class MouseInput implements MouseListener {
     public void mousePressed(MouseEvent e) {
         if (BUTTON1 == e.getButton()) {
             leftMouse = true;
-        } else {
-            leftMouse = false;
         }
         if (BUTTON3 == e.getButton()) {
             rightMouse = true;
-        } else {
-            rightMouse = false;
         }
 //        this.rightMouse = false;
 //        this.leftMouse = false;

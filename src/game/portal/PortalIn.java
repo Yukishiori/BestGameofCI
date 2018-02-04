@@ -23,9 +23,11 @@ public class PortalIn extends GameObject implements PhysicBody, HitObject {
         if (face == 2 || face == 4) {
             this.renderer = vertImage;
             this.boxCollider = new BoxCollider(25, 50);
+            this.boxCollider.position.set(this.position);
         } else if (face == 3 || face == 5) {
             this.renderer = horiImage;
             this.boxCollider = new BoxCollider(50, 25);
+            this.boxCollider.position.set(this.position);
         }
     }
 
