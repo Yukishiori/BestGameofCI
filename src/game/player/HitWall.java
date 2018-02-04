@@ -1,6 +1,5 @@
 package game.player;
 
-import game.portal.PortalInVertical;
 import game.wall.Wall;
 import hit.RunHitObject;
 
@@ -10,7 +9,7 @@ public class HitWall {
     public HitWall() {
         this.arrays = new RunHitObject[]{
                 new RunHitObject(Wall.class),
-                new RunHitObject(PortalInVertical.class)
+//                new RunHitObject(PortalIn.class)
         };
     }
 

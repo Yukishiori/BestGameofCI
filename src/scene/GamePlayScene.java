@@ -4,6 +4,7 @@ import core.GameObjectManager;
 import game.background.Background;
 import game.cursor.Cursor;
 import game.player.Player;
+import game.portal.PrePortal;
 import game.wall.Wall;
 import tilemap.TileMap;
 
@@ -15,6 +16,10 @@ public class GamePlayScene implements Scene {
         this.setupCursor();
         TileMap map = new TileMap();
         map.drawMap();
+        PrePortal.instance.position.set(0, 0);
+        PrePortal.instance.config(2);
+//        PortalIn portalInVertical = GameObjectManager.instance.recycle(PortalIn.class);
+//        portalInVertical.position.set(400,400);
     }
 
     @Override

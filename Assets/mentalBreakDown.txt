@@ -1,0 +1,43 @@
+    hmm so we want to make a portal system
+    how can we accomplish this goal ?
+    - " 3 portal system "
+    what ?
+    - " preview, in and out "
+    they're the same ?
+    - "not really preview is to show only in is to check collision and out is to determine out source"
+    are there only one portal per ?
+    - "yah"
+    how are we gonna make sure there are only one portal available in the map ?
+    -"Hmm i'm thinking about using static to ensure its uniqueness"
+    How are we gonna initialize it then ?
+    -"let's just use a start point for map"
+    So how about the out part
+    -"Thinking about the value of the portal"
+    Value ?
+    -" Each portal has value that determine its face position right
+    2. LEFT
+    3.UP
+    4.RIGHT
+    5.DOWN
+    "
+    I see, so how are we gonna move the portal, or create a new instance of it and delete the other ?
+    -" Hmm we use instance to move it "
+    So the portal has to have a fixed position each map ?
+    -" Yeah that's the down side of this game"
+    So Shall we make it ?
+    -"Let's make a list of what we have to do first"
+    UH huh which portal will be the easiest one to make all
+    -"preview right ?"
+    hmmm, we shall see
+    waiitttttt, we have to remake the InvisibleBLock thing ?????
+    -"Yeah it's pretty stupid as it was"
+    Geh...
+    We gonna use invisibleBlock as a frame for our portal ???
+    -"Guess so..."
+    Waddya mean ?
+    "Yeah we gonna do it"
+    "Alright i set up the type of the face thing"
+    What's next
+    "Hit make portal"
+    preview first ?
+    "Yah"

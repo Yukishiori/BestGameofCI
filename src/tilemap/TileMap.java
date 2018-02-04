@@ -5,7 +5,6 @@ import core.GameObjectManager;
 import game.invisibleBlock.InvisibleBlock;
 import game.wall.Wall;
 
-import java.lang.reflect.Array;
 import java.util.Vector;
 
 public class TileMap {
@@ -28,7 +27,7 @@ public class TileMap {
                 } else if (map[j][i] >= 2) {
                     InvisibleBlock invisibleBlock = GameObjectManager.instance.recycle(InvisibleBlock.class);
                     invisibleBlock.position.set(i * 50, j * 50);
-                    invisibleBlock.type = map[j][i];
+                    invisibleBlock.config(map[j][i]);
                 }
             }
         }

@@ -15,7 +15,6 @@ public class HitInvisibleBlock {
     public void run(Cursor cursor) {
 
         for (RunHitObject runHitObject : arrays) {
-
             runHitObject.run(cursor);
         }
     }

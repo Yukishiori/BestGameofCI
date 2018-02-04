@@ -2,17 +2,11 @@ package game.cursor;
 
 import constants.Constant;
 import core.GameObject;
-import core.GameObjectManager;
-import core.Vector2D;
-import game.player.Player;
-import game.portal.MakePortal;
-import game.wall.Wall;
 import hit.HitObject;
 import input.MouseMotionInput;
 import physics.BoxCollider;
 import physics.PhysicBody;
 import render.ImageRenderer;
-import utils.Mathx;
 
 public class Cursor extends GameObject implements PhysicBody, HitObject {
     public BoxCollider boxCollider = new BoxCollider(Constant.Cursor.WIDTH, Constant.Cursor.HEIGHT);
