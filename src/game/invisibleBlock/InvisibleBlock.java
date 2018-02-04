@@ -25,24 +25,9 @@ public class InvisibleBlock extends GameObject implements PhysicBody, HitObject 
     @Override
     public void getHit(GameObject gameObject) {
         movePortal(this.type);
-        System.out.println(this.type);
     }
 
     private void movePortal(int type) {
-//        switch (type) {
-//            case 2: {
-//
-//            }
-//            case 3: {
-//            }
-//            case 4: {
-
-//            }
-//            case 5: {
-//                PrePortal.instance.position.set(this.position.x, this.position.y + 25);
-//                PrePortal.instance.config(type);
-//            }
-//        }
         if (type == 2) {
             PrePortal.instance.position.set(this.position.x + 25, this.position.y);
             PrePortal.instance.config(type);

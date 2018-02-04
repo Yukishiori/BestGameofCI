@@ -45,6 +45,7 @@ public class Cursor extends GameObject implements PhysicBody, HitObject {
     }
 
     private void makePortal() {
+
         if (MouseInput.instance.leftMouse && PrePortal.instance.position != null) {
             PortalIn.instance.position.set(PrePortal.instance.position);
             PortalIn.instance.config(PrePortal.instance.face);

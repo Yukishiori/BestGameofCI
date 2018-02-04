@@ -19,8 +19,6 @@ public class GamePlayScene implements Scene {
         map.drawMap();
 //        PrePortal.instance.position.set(0, 0);
 //        PrePortal.instance.config(2);
-        PortalIn.instance.position.set(0, 0);
-        PortalIn.instance.config(2);
 //        PortalIn portalInVertical = GameObjectManager.instance.recycle(PortalIn.class);
 //        portalInVertical.position.set(400,400);
     }
