@@ -24,7 +24,7 @@ public class TileMap {
                     Wall wall = GameObjectManager.instance.recycle(Wall.class);
                     wall.position.set(i * 50, j * 50);
                     this.vector.add(wall);
-                } else if (map[j][i] >= 2) {
+                } else if (map[j][i] > 1) {
                     InvisibleBlock invisibleBlock = GameObjectManager.instance.recycle(InvisibleBlock.class);
                     invisibleBlock.position.set(i * 50, j * 50);
                     invisibleBlock.config(map[j][i]);

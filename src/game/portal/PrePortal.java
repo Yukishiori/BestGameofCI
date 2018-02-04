@@ -18,7 +18,7 @@ public class PrePortal extends GameObject {
     public void config(int face) {
         if (face == 2 || face == 4) {
             this.renderer = vertImage;
-        } else {
+        } else if (face == 3 || face == 5) {
             this.renderer = horiImage;
         }
     }
