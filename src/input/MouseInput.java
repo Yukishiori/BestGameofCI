@@ -12,9 +12,18 @@ public class MouseInput implements MouseListener {
     public boolean mouseReleased;
     public boolean mouseEntered;
     public boolean mouseExited;
+    public boolean rightMouse;
+    public boolean leftMouse;
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        if (e.getButton() == 1) {
+            leftMouse = true;
+            rightMouse = false;
+        } else if (e.getButton() == 3) {
+            leftMouse = false;
+            rightMouse = true;
+        }
         this.mouseClicked = true;
         this.mousePressed = false;
         this.mouseReleased = false;
@@ -32,6 +41,8 @@ public class MouseInput implements MouseListener {
         this.mouseClicked = false;
         this.mousePressed = false;
         this.mouseReleased = true;
+        rightMouse = false;
+        leftMouse = true;
     }
 
     @Override
