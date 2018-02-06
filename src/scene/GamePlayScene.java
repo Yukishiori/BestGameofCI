@@ -2,6 +2,7 @@ package scene;
 
 import core.GameObjectManager;
 import game.background.Background;
+import game.coins.Coin;
 import game.coins.CoinSpawner;
 import game.cursor.Cursor;
 import game.player.Player;
@@ -53,7 +54,9 @@ public class GamePlayScene implements Scene {
 
     private void setupCoinSpawner() {
         CoinSpawner coinSpawner = GameObjectManager.instance.recycle(CoinSpawner.class);
-        coinSpawner.config();
+        coinSpawner.run();
+        Coin.instance.isAlive = false;
+//        coinSpawner.config();
     }
 
 }

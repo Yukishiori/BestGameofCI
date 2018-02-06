@@ -1,6 +1,7 @@
 package tilemap;
 
 import constants.Constant;
+import constants.MapConstant;
 import core.GameObjectManager;
 import game.invisibleBlock.InvisibleBlock;
 import game.wall.Wall;
@@ -12,12 +13,11 @@ public class TileMap {
     public int[][] map;
 
     public TileMap() {
-        this.map = Constant.TileMap.map1;
+        this.map = MapConstant.TileMap.map0;
         this.vector = new Vector<>();
     }
 
     public void drawMap() {
-//        System.out.println("u draw ?");
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[0].length; j++) {
                 if (map[j][i] == 1) {

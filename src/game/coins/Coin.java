@@ -3,6 +3,7 @@ package game.coins;
 import constants.Constant;
 import core.GameObject;
 import core.GameObjectManager;
+import core.Vector2D;
 import game.coins.explosion.SparkleParticle;
 import game.coins.explosion.Sparkling;
 import hitCore.HitObject;
@@ -16,6 +17,7 @@ public class Coin extends GameObject implements PhysicBody, HitObject {
 
     public BoxCollider boxCollider = new BoxCollider(30, 30);
     private HitCoin hitCoin = new HitCoin();
+    public static Coin instance = GameObjectManager.instance.recycle(Coin.class);
     private Random random = new Random();
 
     public Coin() {
@@ -25,10 +27,11 @@ public class Coin extends GameObject implements PhysicBody, HitObject {
     @Override
     public void run() {
         super.run();
+//        sparkle();
         this.boxCollider.position.set(this.position);
         hitCoin.run(this);
         Sparkling sparkling = GameObjectManager.instance.recycle(Sparkling.class);
-        sparkle();
+        sparkling.config(this);
     }
 
     @Override
@@ -43,6 +46,6 @@ public class Coin extends GameObject implements PhysicBody, HitObject {
 
     public void sparkle() {
         SparkleParticle sparkleParticle = GameObjectManager.instance.recycle(SparkleParticle.class);
-        sparkleParticle.position.set(random.nextInt(120) + this.position.x - 60, random.nextInt(120) + this.position.y - 60);
+        sparkleParticle.position.set(random.nextInt(60) + this.position.x - 30, random.nextInt(80) + this.position.y - 40);
     }
 }
