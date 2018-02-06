@@ -6,6 +6,7 @@ import core.GameObjectManager;
 import core.Vector2D;
 import render.ImageRenderer;
 
+import java.util.Random;
 import java.util.Vector;
 
 public class PortalOut extends GameObject {
@@ -20,19 +21,20 @@ public class PortalOut extends GameObject {
     }
 
     public void config(int face) {
+        Random random = new Random();
         this.face = face;
         if (face == 2) {
             this.renderer = vertImage;
-            this.transferVelocity.set(-3, 0);
+            this.transferVelocity.set(-1 * random.nextInt(5) - 2, 0);
         } else if (face == 4) {
             this.renderer = vertImage;
-            this.transferVelocity.set(3, 0);
+            this.transferVelocity.set(random.nextInt(5) + 2, 0);
         } else if (face == 3) {
             this.renderer = horiImage;
-            this.transferVelocity.set(0, -3);
+            this.transferVelocity.set(0, -1 * random.nextInt(5) - 2);
         } else if (face == 5) {
             this.renderer = horiImage;
-            this.transferVelocity.set(0, 3);
+            this.transferVelocity.set(0, random.nextInt(5) + 2);
         }
 
     }

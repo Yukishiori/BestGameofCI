@@ -5,7 +5,7 @@ import render.ImageRenderer;
 
 public class DrunkParticle extends GameObject {
     public DrunkParticle() {
-        this.renderer = new ImageRenderer("Assets/drunk.png");
+        this.renderer = new ImageRenderer("Assets/state/drunk.png");
     }
 
 }

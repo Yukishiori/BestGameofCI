@@ -10,7 +10,7 @@ public class SleepyParticle extends GameObject {
     public FrameCounter lifeTime;
 
     public SleepyParticle() {
-        this.renderer = new ImageRenderer("Assets/sleepy.png");
+        this.renderer = new ImageRenderer("Assets/state/sleepy.png");
     }
 
     @Override

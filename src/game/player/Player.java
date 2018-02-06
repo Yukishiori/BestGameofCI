@@ -25,13 +25,13 @@ public class Player extends GameObject implements PhysicBody, HitObject {
     private boolean stateChanged;
     private DecideState decideState = new DecideState();
     private Random random = new Random();
-    private FrameCounter frameCounter = new FrameCounter(random.nextInt(60) + 30);
+    private FrameCounter timeBeforeChangeState = new FrameCounter(random.nextInt(Constant.Player.TIME_BEFORE_CHANGE_STATE) + Constant.Player.PLUS_TIME);
     private FrameCounter DELAY_TIME = new FrameCounter(1);
 
     public Player() {
         this.renderer = new ImageRenderer(Constant.Player.PATH);
         this.isAlive = true;
-        this.boxCollider = new BoxCollider(30, 30);
+        this.boxCollider = new BoxCollider(Constant.Player.WIDTH, Constant.Player.HEIGHT);
     }
 
     @Override
@@ -42,15 +42,14 @@ public class Player extends GameObject implements PhysicBody, HitObject {
 
         playerHitObject.run(this);
         if (!stateChanged) {
-            if (frameCounter.run()) {
+            if (timeBeforeChangeState.run()) {
                 State chosenState = decideState.run(this);
-                frameCounter.reset();
-                frameCounter = new FrameCounter(45);
-//                chosenState.execute(this);
+                timeBeforeChangeState.reset();
+                timeBeforeChangeState = new FrameCounter(45);
                 if (DELAY_TIME.run()) {
                     chosenState.execute(this);
                     stateChanged = true;
-                    frameCounter = new FrameCounter(random.nextInt(60) + 30);
+                    timeBeforeChangeState = new FrameCounter(random.nextInt(Constant.Player.TIME_BEFORE_CHANGE_STATE) + Constant.Player.PLUS_TIME);
                 }
             }
         }
@@ -68,7 +67,7 @@ public class Player extends GameObject implements PhysicBody, HitObject {
                 this.position.set(PortalOut.instance.getCenterPosition());
                 this.velocity.set(PortalOut.instance.transferVelocity);
                 stateChanged = false;
-                frameCounter.reset();
+                timeBeforeChangeState.reset();
             }
         } else if (gameObject instanceof Coin) {
             GamePlayScene.SCORE++;

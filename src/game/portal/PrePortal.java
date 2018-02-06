@@ -1,5 +1,6 @@
 package game.portal;
 
+import constants.Constant;
 import core.GameObject;
 import core.GameObjectManager;
 import render.ImageRenderer;
@@ -7,8 +8,8 @@ import render.ImageRenderer;
 public class PrePortal extends GameObject {
     public static PrePortal instance = GameObjectManager.instance.recycle(PrePortal.class);
     public int face;
-    private ImageRenderer vertImage = new ImageRenderer("Assets/preportal2hori.png");
-    private ImageRenderer horiImage = new ImageRenderer("Assets/preportal2vert.png");
+    private ImageRenderer vertImage = new ImageRenderer(Constant.PrePortal.PATH_VERT);
+    private ImageRenderer horiImage = new ImageRenderer(Constant.PrePortal.PATH_HORI);
 
     public PrePortal() {
 
