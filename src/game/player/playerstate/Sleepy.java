@@ -28,13 +28,13 @@ public class Sleepy extends GameObject implements State {
         int i = random.nextInt(4);
 //        System.out.println(i);
         if (i == 0) {
-            player.velocity.set(0, 5);
+            player.velocity.set(0, random.nextInt(4) + 1);
         } else if (i == 1) {
-            player.velocity.set(5, 0);
+            player.velocity.set(random.nextInt(4) + 1, 0);
         } else if (i == 2) {
-            player.velocity.set(-5, 0);
+            player.velocity.set(-1 * random.nextInt(4) - 1, 0);
         } else if (i == 3) {
-            player.velocity.set(0, -5);
+            player.velocity.set(0, -1 * random.nextInt(4) - 1);
         }
     }
 }

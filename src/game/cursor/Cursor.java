@@ -20,10 +20,7 @@ public class Cursor extends GameObject implements PhysicBody, HitObject {
     private HitInvisibleBlock hitInvisibleBlock = new HitInvisibleBlock();
 
     public Cursor() {
-
-        this.renderer = new ImageRenderer(Constant.Cursor.PATH);
-
-
+//        this.renderer = new ImageRenderer(Constant.Cursor.PATH);
     }
 
     @Override

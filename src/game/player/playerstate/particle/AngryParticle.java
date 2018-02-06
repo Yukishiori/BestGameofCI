@@ -11,7 +11,7 @@ public class AngryParticle extends GameObject {
     public Vector2D velocity = new Vector2D();
 
     public AngryParticle() {
-        this.renderer = new ImageRenderer("Assets/angery.png");
+        this.renderer = new ImageRenderer("Assets/state/angery.png");
     }
 
     @Override
@@ -23,5 +23,4 @@ public class AngryParticle extends GameObject {
             this.position.addUp(this.velocity);
         }
     }
-
 }

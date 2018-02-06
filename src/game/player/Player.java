@@ -39,17 +39,18 @@ public class Player extends GameObject implements PhysicBody, HitObject {
         super.run();
         this.position.addUp(velocity);
         this.boxCollider.position.set(this.position);
-
+        clampPlayer();
         playerHitObject.run(this);
         if (!stateChanged) {
             if (timeBeforeChangeState.run()) {
                 State chosenState = decideState.run(this);
                 timeBeforeChangeState.reset();
-                timeBeforeChangeState = new FrameCounter(45);
+                timeBeforeChangeState = new FrameCounter(Constant.Player.PLUS_TIME);
                 if (DELAY_TIME.run()) {
                     chosenState.execute(this);
                     stateChanged = true;
                     timeBeforeChangeState = new FrameCounter(random.nextInt(Constant.Player.TIME_BEFORE_CHANGE_STATE) + Constant.Player.PLUS_TIME);
+                    DELAY_TIME.reset();
                 }
             }
         }
@@ -73,6 +74,12 @@ public class Player extends GameObject implements PhysicBody, HitObject {
             GamePlayScene.SCORE++;
         } else {
             this.isAlive = false;
+        }
+    }
+
+    private void clampPlayer() {
+        if (this.position.x == 0 || this.position.x == 800 || this.position.y == 0 || this.position.y == 800) {
+            this.velocity = this.velocity.multiply(-1);
         }
     }
 }
