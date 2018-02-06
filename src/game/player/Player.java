@@ -1,13 +1,16 @@
 package game.player;
 
+import constants.Constant;
 import core.GameObject;
 import core.Vector2D;
+import game.coins.Coin;
 import game.portal.PortalIn;
 import game.portal.PortalOut;
-import hit.HitObject;
+import hitCore.HitObject;
 import physics.BoxCollider;
 import physics.PhysicBody;
 import render.ImageRenderer;
+import scene.GamePlayScene;
 
 public class Player extends GameObject implements PhysicBody, HitObject {
 
@@ -16,7 +19,7 @@ public class Player extends GameObject implements PhysicBody, HitObject {
     private PlayerHitObject playerHitObject = new PlayerHitObject();
 
     public Player() {
-        this.renderer = new ImageRenderer("Assets/Player2.png");
+        this.renderer = new ImageRenderer(Constant.Player.PATH);
         this.isAlive = true;
         this.boxCollider = new BoxCollider(30, 30);
     }
@@ -36,13 +39,13 @@ public class Player extends GameObject implements PhysicBody, HitObject {
 
     @Override
     public void getHit(GameObject gameObject) {
-//        System.out.println("ff");
-        System.out.println("Lul");
         if (gameObject instanceof PortalIn) {
             if (PortalOut.instance.position != null) {
                 this.position.set(PortalOut.instance.getCenterPosition());
                 this.velocity.set(PortalOut.instance.transferVelocity);
             }
+        } else if (gameObject instanceof Coin) {
+            GamePlayScene.SCORE++;
         } else {
             this.isAlive = false;
         }

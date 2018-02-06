@@ -27,6 +27,7 @@ public class GameObject {
     public void reset() {
         this.actions.removeAllElements();
     }
+
     public void render(Graphics graphics){
         if (renderer != null) {
             this.renderer.render(graphics,this.position);

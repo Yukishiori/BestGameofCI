@@ -2,10 +2,9 @@ package game.invisibleBlock;
 
 import core.GameObject;
 import game.portal.PrePortal;
-import hit.HitObject;
+import hitCore.HitObject;
 import physics.BoxCollider;
 import physics.PhysicBody;
-import render.ImageRenderer;
 
 public class InvisibleBlock extends GameObject implements PhysicBody, HitObject {
 

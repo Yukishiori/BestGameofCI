@@ -1,7 +1,7 @@
 package game.cursor;
 
 import game.invisibleBlock.InvisibleBlock;
-import hit.RunHitObject;
+import hitCore.RunHitObject;
 
 public class HitInvisibleBlock {
     private RunHitObject[] arrays;

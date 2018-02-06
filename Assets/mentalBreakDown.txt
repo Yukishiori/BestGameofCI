@@ -41,3 +41,23 @@
     "Hit make portal"
     preview first ?
     "Yah"
+
+   -5/2
+   Hey
+   "Hello"
+   So what are we going to do today
+   "We are making the objective of the game!"
+   Which is ?
+   "The coin System"
+   What is the plan ?
+   "Make the coin appear randomly after being picked up ? "
+   The wall seems like a waste of space right
+   "Yah so we will make it random(700) + 50 right "
+   Agree
+   "I like doing this, its like i'm writing out everything for a friend which compensate for my lack of friends lol"
+   K buddy
+   And then what do we do to make the coin picking stuff seems rewarding ?
+   "Hmm"
+   "Wanna try out the drawing font thing ?"
+   You do it
+   "Kay.."

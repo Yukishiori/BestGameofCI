@@ -1,4 +1,6 @@
 import core.GameObjectManager;
+import core.Vector2D;
+import game.text.DrawText;
 import input.MouseInput;
 import input.MouseMotionInput;
 import scene.GamePlayScene;
@@ -44,8 +46,8 @@ public class GameCanvas extends JPanel {
 
     public void renderAll() {
         GameObjectManager.instance.renderAll(this.graphics);
+        DrawText.drawText(this.graphics, "Score: " + GamePlayScene.SCORE, new Vector2D(600, 200));
         this.repaint();
     }
-
 }
 

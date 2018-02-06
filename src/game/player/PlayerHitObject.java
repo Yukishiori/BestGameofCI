@@ -1,8 +1,10 @@
 package game.player;
 
+import game.coins.Coin;
 import game.portal.PortalIn;
 import game.wall.Wall;
-import hit.RunHitObject;
+import hitCore.RunHitObject;
+import movingplaform.MovingPlatform;
 
 public class PlayerHitObject {
     private RunHitObject[] arrays;
@@ -10,7 +12,9 @@ public class PlayerHitObject {
     public PlayerHitObject() {
         this.arrays = new RunHitObject[]{
                 new RunHitObject(Wall.class),
-                new RunHitObject(PortalIn.class)
+                new RunHitObject(PortalIn.class),
+                new RunHitObject(Coin.class),
+                new RunHitObject(MovingPlatform.class)
 //                new RunHitObject(PortalIn.class)
         };
     }

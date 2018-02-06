@@ -2,10 +2,11 @@ package game.cursor;
 
 import constants.Constant;
 import core.GameObject;
+import core.Vector2D;
 import game.portal.PortalIn;
 import game.portal.PortalOut;
 import game.portal.PrePortal;
-import hit.HitObject;
+import hitCore.HitObject;
 import input.MouseInput;
 import input.MouseMotionInput;
 import physics.BoxCollider;
@@ -53,6 +54,9 @@ public class Cursor extends GameObject implements PhysicBody, HitObject {
             MouseInput.instance.leftMouse = false;
         }
         if (MouseInput.instance.rightMouse && PrePortal.instance.position != null) {
+            if (PortalOut.instance.position == null) {
+                PortalOut.instance.position = new Vector2D(0, 0);
+            }
             PortalOut.instance.position.set(PrePortal.instance.position);
             PortalOut.instance.config(PrePortal.instance.face);
             MouseInput.instance.rightMouse = false;

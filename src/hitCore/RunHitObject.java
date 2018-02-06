@@ -1,4 +1,4 @@
-package hit;
+package hitCore;
 
 import core.GameObject;
 import core.GameObjectManager;

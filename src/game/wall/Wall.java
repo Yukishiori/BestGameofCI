@@ -3,7 +3,7 @@ package game.wall;
 import constants.Constant;
 import core.GameObject;
 import core.Vector2D;
-import hit.HitObject;
+import hitCore.HitObject;
 import physics.BoxCollider;
 import physics.PhysicBody;
 import render.ImageRenderer;

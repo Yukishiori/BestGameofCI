@@ -3,12 +3,10 @@ package game.portal;
 import constants.Constant;
 import core.GameObject;
 import core.GameObjectManager;
-import hit.HitObject;
+import hitCore.HitObject;
 import physics.BoxCollider;
 import physics.PhysicBody;
 import render.ImageRenderer;
-
-import java.awt.*;
 
 public class PortalIn extends GameObject implements PhysicBody, HitObject {
     public static PortalIn instance = GameObjectManager.instance.recycle(PortalIn.class);

@@ -56,4 +56,15 @@ public class Constant {
     public static class Coin {
         public static String PATH = "Assets/coin.png";
     }
+
+    public static class Player {
+        public static String PATH = "Assets/Player2.png";
+    }
+
+    public static class SparkleParticle {
+        public static String[] PATHS = {
+                "Assets/sparkle_partifcle1.png",
+                "Assets/sparkle_particle2.png"
+        };
+    }
 }
