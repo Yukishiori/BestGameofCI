@@ -54,7 +54,6 @@ public class Player extends GameObject implements PhysicBody, HitObject {
                 }
             }
         }
-
     }
 
     @Override
@@ -69,6 +68,7 @@ public class Player extends GameObject implements PhysicBody, HitObject {
                 this.position.set(PortalOut.instance.getCenterPosition());
                 this.velocity.set(PortalOut.instance.transferVelocity);
                 stateChanged = false;
+                frameCounter.reset();
             }
         } else if (gameObject instanceof Coin) {
             GamePlayScene.SCORE++;

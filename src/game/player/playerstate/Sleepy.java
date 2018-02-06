@@ -25,15 +25,16 @@ public class Sleepy extends GameObject implements State {
 
     @Override
     public void execute(Player player) {
-        switch (random.nextInt(4)) {
-            case 0:
-                player.velocity.set(0, 5);
-            case 1:
-                player.velocity.set(5, 0);
-            case 2:
-                player.velocity.set(0, -5);
-            case 3:
-                player.velocity.set(-5, 0);
+        int i = random.nextInt(4);
+//        System.out.println(i);
+        if (i == 0) {
+            player.velocity.set(0, 5);
+        } else if (i == 1) {
+            player.velocity.set(5, 0);
+        } else if (i == 2) {
+            player.velocity.set(-5, 0);
+        } else if (i == 3) {
+            player.velocity.set(0, -5);
         }
     }
 }

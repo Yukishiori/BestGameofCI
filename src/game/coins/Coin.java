@@ -9,6 +9,7 @@ import game.coins.explosion.Sparkling;
 import hitCore.HitObject;
 import physics.BoxCollider;
 import physics.PhysicBody;
+import render.AnimationRenderer;
 import render.ImageRenderer;
 
 import java.util.Random;
@@ -21,7 +22,7 @@ public class Coin extends GameObject implements PhysicBody, HitObject {
     private Random random = new Random();
 
     public Coin() {
-        this.renderer = new ImageRenderer(Constant.Coin.PATH);
+        this.renderer = new AnimationRenderer(true, 3, Constant.Coin.PATH);
     }
 
     @Override

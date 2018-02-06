@@ -33,12 +33,7 @@ public class AnimationRenderer implements Renderer {
     public void render(Graphics graphics, Vector2D position) {
         if (this.disable) return;
         BufferedImage image = this.list.get(this.currentIndex);
-        Vector2D origin = position.subtract( image.getWidth() / 2, image.getHeight() / 2);
-        graphics.drawImage(image,
-                (int)origin.x,
-                (int) origin.y,
-                null
-        );
+        graphics.drawImage(image, (int) position.x, (int) position.y, null);
         if (this.currentIndex == this.list.size() - 1 && !this.isRepeat) {
             this.disable = true;
         } else {
