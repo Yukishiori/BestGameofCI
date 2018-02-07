@@ -2,13 +2,10 @@ package scene;
 
 import core.GameObjectManager;
 import game.background.Background;
-import game.coins.Coin;
 import game.coins.CoinSpawner;
 import game.cursor.Cursor;
 import game.player.Player;
 import game.player.GameObjectSpawner;
-import game.portal.PortalIn;
-import game.portal.PortalOut;
 import game.portal.PrePortal;
 import tilemap.TileMap;
 
