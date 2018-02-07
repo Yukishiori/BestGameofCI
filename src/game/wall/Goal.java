@@ -5,6 +5,8 @@ import hitCore.HitObject;
 import physics.BoxCollider;
 import physics.PhysicBody;
 import render.ImageRenderer;
+import scene.ChangeLevelScene;
+import scene.SceneManager;
 import tilemap.TileMap;
 
 import java.util.Random;
@@ -18,7 +20,8 @@ public class Goal extends GameObject implements PhysicBody, HitObject {
 
     @Override
     public void getHit(GameObject gameObject) {
-        System.out.println("U DONE NOW");
+        System.out.println("u lose");
+        SceneManager.instance.changeScene(new ChangeLevelScene());
     }
 
     @Override

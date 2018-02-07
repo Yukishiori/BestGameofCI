@@ -51,9 +51,10 @@ public class Cursor extends GameObject implements PhysicBody, HitObject {
             MouseInput.instance.leftMouse = false;
         }
         if (MouseInput.instance.rightMouse && PrePortal.instance.position != null) {
-            if (PortalOut.instance.position == null) {
-                PortalOut.instance.position = new Vector2D(0, 0);
-            }
+//            if (PortalOut.instance.position == null) {
+//                PortalOut.instance.position = new Vector2D(0, 0);
+//                PortalOut.instance.config(PrePortal.instance.face);
+//            }
             PortalOut.instance.position.set(PrePortal.instance.position);
             PortalOut.instance.config(PrePortal.instance.face);
             MouseInput.instance.rightMouse = false;

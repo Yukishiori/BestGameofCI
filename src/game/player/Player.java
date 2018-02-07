@@ -17,6 +17,7 @@ import physics.BoxCollider;
 import physics.PhysicBody;
 import render.ImageRenderer;
 import scene.GamePlayScene;
+import scene.SceneManager;
 
 import java.awt.*;
 import java.util.Random;
@@ -38,6 +39,8 @@ public class Player extends GameObject implements PhysicBody, HitObject {
     private boolean EXECUTED;
     private boolean ENDED;
     private boolean RUNNING;
+    private boolean CanGoInPortal = true;
+    private FrameCounter PORTAL_TIME_OUT = new FrameCounter(Constant.Player.PORTAL_TIME_OUT_TIME);
     private PlayerExplode playerExplode = new PlayerExplode();
 //    public static Vector2D position = new Vector2D();
 
@@ -50,6 +53,9 @@ public class Player extends GameObject implements PhysicBody, HitObject {
     @Override
     public void run() {
         super.run();
+        if (PORTAL_TIME_OUT.run()) {
+            CanGoInPortal = true;
+        }
         this.position.addUp(velocity);
         this.boxCollider.position.set(this.position);
         clampPlayer();
@@ -79,6 +85,11 @@ public class Player extends GameObject implements PhysicBody, HitObject {
         }
         if (this.position.x <= 0 || this.position.y <= 0 || this.position.x >= Constant.Windows.WIDTH || this.position.y >= Constant.Windows.HEIGHT) {
             this.isAlive = false;
+
+            //dangerous!!!!
+            SceneManager.instance.changeScene(new GamePlayScene());
+
+
         }
     }
 
@@ -89,7 +100,7 @@ public class Player extends GameObject implements PhysicBody, HitObject {
 
     @Override
     public void getHit(GameObject gameObject) {
-        if (gameObject instanceof PortalIn) {
+        if (gameObject instanceof PortalIn && CanGoInPortal) {
             if (PortalOut.instance.position != null) {
                 this.position.set(PortalOut.instance.getCenterPosition());
                 this.velocity.set(PortalOut.instance.transferVelocity);
@@ -101,12 +112,29 @@ public class Player extends GameObject implements PhysicBody, HitObject {
                 EXECUTED = false;
                 ENDED = false;
                 RUNNING = true;
+                CanGoInPortal = false;
+                PORTAL_TIME_OUT.reset();
+            }
+        } else if (gameObject instanceof PortalOut && CanGoInPortal) {
+            if (PortalIn.instance.position != null) {
+                this.position.set(PortalIn.instance.getCenterPosition());
+                this.velocity.set(PortalIn.instance.transferVelocity);
+                stateChanged = false;
+                timeBeforeChangeState.reset();
+                DELAY_TIME.reset();
+                DELAY_TIME_BEFORE_END.reset();
+                RUN_TIME.reset();
+                EXECUTED = false;
+                ENDED = false;
+                RUNNING = true;
+                CanGoInPortal = false;
+                PORTAL_TIME_OUT.reset();
             }
         } else if (gameObject instanceof Coin) {
             GamePlayScene.CoinToNextLevel--;
             this.HITCOIN = true;
             GamePlayScene.SCORE++;
-        } else {
+        } else if (gameObject instanceof Wall) {
             this.isAlive = false;
             playerExplode.config(this);
         }

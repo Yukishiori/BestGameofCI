@@ -6,7 +6,7 @@ import core.GameObjectManager;
 import render.ImageRenderer;
 
 public class PrePortal extends GameObject {
-    public static PrePortal instance = GameObjectManager.instance.recycle(PrePortal.class);
+    public static PrePortal instance;
     public int face;
     private ImageRenderer vertImage = new ImageRenderer(Constant.PrePortal.PATH_VERT);
     private ImageRenderer horiImage = new ImageRenderer(Constant.PrePortal.PATH_HORI);

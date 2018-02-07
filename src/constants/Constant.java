@@ -54,6 +54,7 @@ public class Constant {
         public static final int PLUS_TIME = 45;
         public static final int WIDTH = 30;
         public static final int HEIGHT = 30;
+        public static final int PORTAL_TIME_OUT_TIME = 15;
     }
 
     public static class SparkleParticle {

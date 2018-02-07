@@ -9,12 +9,15 @@ import game.wall.Wall;
 import java.util.Vector;
 
 public class TileMap {
+    public static TileMap instance = new TileMap();
     public static Vector<Wall> vector;
+    public Vector<int[][]> mapList = new Vector<>();
     public int[][] map;
 
     public TileMap() {
-        this.map = MapConstant.TileMap.map0;
         this.vector = new Vector<>();
+        mapList.add(MapConstant.TileMap.map0);
+        mapList.add(MapConstant.TileMap.map1);
     }
 
     public void drawMap() {

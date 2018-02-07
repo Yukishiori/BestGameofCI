@@ -83,6 +83,9 @@ public class GameObjectManager {
     }
 
     public void clear() {
+        for (GameObject gameObject : vector) {
+            gameObject.isAlive = false;
+        }
         this.vector.clear();
         this.newVector.clear();
     }

@@ -6,6 +6,7 @@ import game.player.Player;
 import game.text.DrawText;
 import input.MouseInput;
 import input.MouseMotionInput;
+import scene.ChangeLevelScene;
 import scene.GamePlayScene;
 import scene.SceneManager;
 
@@ -51,6 +52,8 @@ public class GameCanvas extends JPanel {
 
     public void renderAll() {
         GameObjectManager.instance.renderAll(this.graphics);
+        showScoreBoard();
+
         if (Player.HITCOIN) {
             showCoinLeft();
             if (timeShowTarget.run()) {
@@ -63,13 +66,13 @@ public class GameCanvas extends JPanel {
 
     public void showCoinLeft() {
         Player player = GameObjectManager.instance.getPlayer();
-        if (GamePlayScene.CoinToNextLevel <= 0) {
-            DrawText.drawText(graphics, "+1", player.position.add(-10, -10));
-        } else {
-            DrawText.drawText(graphics, GamePlayScene.CoinToNextLevel + "Coins left", player.position.add(-10, -10));
-        }
-
+        DrawText.drawText(graphics, Color.RED, "+1", player.position.add(-10, -10));
     }
 
+    private void showScoreBoard() {
+        DrawText.drawText(graphics, Color.blue, " Score : " + GamePlayScene.SCORE * 100, new Vector2D(0, 20));
+        DrawText.drawText(graphics, Color.orange, Integer.toString(GamePlayScene.CoinToNextLevel), new Vector2D(705, 20));
+        DrawText.drawText(graphics, Color.BLACK, " coin left", new Vector2D(725, 20));
+    }
 }
 

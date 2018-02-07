@@ -7,26 +7,25 @@ import game.coins.CoinSpawner;
 import game.cursor.Cursor;
 import game.player.Player;
 import game.player.GameObjectSpawner;
+import game.portal.PortalIn;
 import game.portal.PortalOut;
 import game.portal.PrePortal;
 import tilemap.TileMap;
 
 public class GamePlayScene implements Scene {
 
-
+    public static int STAGE = 0;
     public static int SCORE = 0;
     public static int CoinToNextLevel = 10;
     @Override
     public void init() {
         setupBackround();
-        setupPlayer();
         this.setupCursor();
-        TileMap map = new TileMap();
-        map.drawMap();
-        PrePortal.instance.position.set(0, 0);
-        PrePortal.instance.config(2);
-        PortalOut.instance.position = null;
+        setupPlayer();
+//        PrePortal.instance.position.set(0, 0);
+//        PrePortal.instance.config(2);
         setupCoinSpawner();
+        setupMap();
     }
 
     @Override
@@ -35,13 +34,10 @@ public class GamePlayScene implements Scene {
     }
 
     private void setupPlayer() {
-
         Player player = GameObjectManager.instance.recycle(Player.class);
         player.position.set(200, 200);
         player.velocity.set(3, 0);
         GameObjectSpawner playerSpawner = GameObjectManager.instance.recycle(GameObjectSpawner.class);
-//        Wall wall = GameObjectManager.instance.recycle(Wall.class);
-//        wall.position.set(0, 0);
     }
 
     private void setupBackround() {
@@ -50,12 +46,23 @@ public class GamePlayScene implements Scene {
 
     private void setupCursor() {
         GameObjectManager.instance.recycle(Cursor.class);
+        PrePortal.instance = GameObjectManager.instance.recycle(PrePortal.class);
+//        if (PortalOut.instance.isAlive = false) {
+//            PortalOut.instance = GameObjectManager.instance.recycle(PortalOut.class);
+//            PortalIn.instance = GameObjectManager.instance.recycle(PortalIn.class);
+//        }
     }
 
     private void setupCoinSpawner() {
+//        Coin.instance = GameObjectManager.instance.recycle(Coin.class);
+//        Coin.instance.position.set(600,600);
         CoinSpawner coinSpawner = GameObjectManager.instance.recycle(CoinSpawner.class);
         coinSpawner.run();
-        Coin.instance.isAlive = false;
+    }
+
+    private void setupMap() {
+        TileMap.instance.map = TileMap.instance.mapList.elementAt(STAGE);
+        TileMap.instance.drawMap();
     }
 
 }
