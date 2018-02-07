@@ -1,5 +1,8 @@
+import core.FrameCounter;
 import core.GameObjectManager;
 import core.Vector2D;
+import game.coins.HitCoin;
+import game.player.Player;
 import game.text.DrawText;
 import input.MouseInput;
 import input.MouseMotionInput;
@@ -11,8 +14,10 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class GameCanvas extends JPanel {
+
     BufferedImage backBuffered;
     Graphics graphics;
+    FrameCounter timeShowTarget = new FrameCounter(10);
 
     public GameCanvas() {
         this.setupBackBuffered();
@@ -35,7 +40,7 @@ public class GameCanvas extends JPanel {
 
     @Override
     protected void paintComponent(Graphics g) {
-        g.drawImage(this.backBuffered,0,0,null);
+        g.drawImage(this.backBuffered, 0, 0, null);
     }
 
     public void runAll() {
@@ -46,8 +51,25 @@ public class GameCanvas extends JPanel {
 
     public void renderAll() {
         GameObjectManager.instance.renderAll(this.graphics);
-        DrawText.drawText(this.graphics, "Score: " + GamePlayScene.SCORE, new Vector2D(600, 200));
+        if (Player.HITCOIN) {
+            showCoinLeft();
+            if (timeShowTarget.run()) {
+                Player.HITCOIN = false;
+                timeShowTarget.reset();
+            }
+        }
         this.repaint();
     }
+
+    public void showCoinLeft() {
+        Player player = GameObjectManager.instance.getPlayer();
+        if (GamePlayScene.CoinToNextLevel <= 0) {
+            DrawText.drawText(graphics, "+1", player.position.add(-10, -10));
+        } else {
+            DrawText.drawText(graphics, GamePlayScene.CoinToNextLevel + "Coins left", player.position.add(-10, -10));
+        }
+
+    }
+
 }
 

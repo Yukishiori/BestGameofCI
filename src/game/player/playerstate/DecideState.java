@@ -10,19 +10,21 @@ public class DecideState {
     private Random random = new Random();
 
     public State run(Player player) {
-        switch (random.nextInt(2) + 1) {
-            case 1: {
-                Angry angry = new Angry();
-                angry.run(player);
-                return angry;
-            }
-            case 2: {
-                Sleepy sleepy = new Sleepy();
-                sleepy.run(player);
-                return sleepy;
-            }
+        int i = random.nextInt(5) + 1;
+        if (i == 1) {
+            Angry angry = new Angry();
+            angry.run(player);
+            return angry;
+        } else if (i == 2) {
+            Sleepy sleepy = new Sleepy();
+            sleepy.run(player);
+            return sleepy;
+        } else if (i == 3) {
+            Rabu rabu = new Rabu();
+            rabu.run(player);
+            return rabu;
+        } else {
+            return null;
         }
-        return null;
     }
-
 }

@@ -6,14 +6,16 @@ import game.coins.Coin;
 import game.coins.CoinSpawner;
 import game.cursor.Cursor;
 import game.player.Player;
+import game.player.GameObjectSpawner;
 import game.portal.PortalOut;
 import game.portal.PrePortal;
-import game.wall.Wall;
 import tilemap.TileMap;
 
 public class GamePlayScene implements Scene {
 
+
     public static int SCORE = 0;
+    public static int CoinToNextLevel = 10;
     @Override
     public void init() {
         setupBackround();
@@ -23,11 +25,8 @@ public class GamePlayScene implements Scene {
         map.drawMap();
         PrePortal.instance.position.set(0, 0);
         PrePortal.instance.config(2);
-//        PortalIn portalInVertical = GameObjectManager.instance.recycle(PortalIn.class);
-//        portalInVertical.position.set(400,400);
         PortalOut.instance.position = null;
         setupCoinSpawner();
-
     }
 
     @Override
@@ -40,6 +39,7 @@ public class GamePlayScene implements Scene {
         Player player = GameObjectManager.instance.recycle(Player.class);
         player.position.set(200, 200);
         player.velocity.set(3, 0);
+        GameObjectSpawner playerSpawner = GameObjectManager.instance.recycle(GameObjectSpawner.class);
 //        Wall wall = GameObjectManager.instance.recycle(Wall.class);
 //        wall.position.set(0, 0);
     }
@@ -56,7 +56,6 @@ public class GamePlayScene implements Scene {
         CoinSpawner coinSpawner = GameObjectManager.instance.recycle(CoinSpawner.class);
         coinSpawner.run();
         Coin.instance.isAlive = false;
-//        coinSpawner.config();
     }
 
 }

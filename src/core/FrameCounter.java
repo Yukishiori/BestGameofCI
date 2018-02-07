@@ -2,7 +2,7 @@ package core;
 
 public class FrameCounter {
     private int count;
-    private int max;
+    public int max;
 
     public FrameCounter(int max) {
         this.max = max;

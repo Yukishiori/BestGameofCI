@@ -62,4 +62,12 @@ public class Constant {
                 "Assets/sparkle_particle2.png"
         };
     }
+
+    public static class PlayerExplosionParticle {
+        public static String[] PATHS = {
+                "Assets/player/dead 1.png",
+                "Assets/player/dead_2.png",
+                "Assets/player/dead_3.png"
+        };
+    }
 }

@@ -5,16 +5,20 @@ import core.FrameCounter;
 import core.GameObject;
 import core.Vector2D;
 import game.coins.Coin;
+import game.player.explosion.PlayerExplode;
 import game.player.playerstate.DecideState;
 import game.player.playerstate.State;
 import game.portal.PortalIn;
 import game.portal.PortalOut;
+import game.text.DrawText;
+import game.wall.Wall;
 import hitCore.HitObject;
 import physics.BoxCollider;
 import physics.PhysicBody;
 import render.ImageRenderer;
 import scene.GamePlayScene;
 
+import java.awt.*;
 import java.util.Random;
 
 public class Player extends GameObject implements PhysicBody, HitObject {
@@ -26,7 +30,16 @@ public class Player extends GameObject implements PhysicBody, HitObject {
     private DecideState decideState = new DecideState();
     private Random random = new Random();
     private FrameCounter timeBeforeChangeState = new FrameCounter(random.nextInt(Constant.Player.TIME_BEFORE_CHANGE_STATE) + Constant.Player.PLUS_TIME);
-    private FrameCounter DELAY_TIME = new FrameCounter(1);
+    public static boolean HITCOIN = false;
+    private FrameCounter DELAY_TIME = new FrameCounter(60);
+    private FrameCounter DELAY_TIME_BEFORE_END = new FrameCounter(DELAY_TIME.max + 120);
+    private FrameCounter RUN_TIME = new FrameCounter(120);
+    private State chosenState;
+    private boolean EXECUTED;
+    private boolean ENDED;
+    private boolean RUNNING;
+    private PlayerExplode playerExplode = new PlayerExplode();
+//    public static Vector2D position = new Vector2D();
 
     public Player() {
         this.renderer = new ImageRenderer(Constant.Player.PATH);
@@ -41,18 +54,31 @@ public class Player extends GameObject implements PhysicBody, HitObject {
         this.boxCollider.position.set(this.position);
         clampPlayer();
         playerHitObject.run(this);
-        if (!stateChanged) {
-            if (timeBeforeChangeState.run()) {
-                State chosenState = decideState.run(this);
-                timeBeforeChangeState.reset();
-                timeBeforeChangeState = new FrameCounter(Constant.Player.PLUS_TIME);
-                if (DELAY_TIME.run()) {
+
+        if (timeBeforeChangeState.run()) {
+            if (!stateChanged) {
+                this.chosenState = decideState.run(this);
+                stateChanged = true;
+            }
+            if (chosenState != null) {
+                if (DELAY_TIME.run() && !EXECUTED) {
+                    EXECUTED = true;
                     chosenState.execute(this);
-                    stateChanged = true;
-                    timeBeforeChangeState = new FrameCounter(random.nextInt(Constant.Player.TIME_BEFORE_CHANGE_STATE) + Constant.Player.PLUS_TIME);
-                    DELAY_TIME.reset();
+                }
+                if (DELAY_TIME.run() && RUNNING) {
+                    chosenState.infiniteEXE(this);
+                    if (RUN_TIME.run()) {
+                        RUNNING = false;
+                    }
+                }
+                if (DELAY_TIME_BEFORE_END.run() && !ENDED) {
+                    ENDED = true;
+                    chosenState.end(this);
                 }
             }
+        }
+        if (this.position.x <= 0 || this.position.y <= 0 || this.position.x >= Constant.Windows.WIDTH || this.position.y >= Constant.Windows.HEIGHT) {
+            this.isAlive = false;
         }
     }
 
@@ -69,11 +95,20 @@ public class Player extends GameObject implements PhysicBody, HitObject {
                 this.velocity.set(PortalOut.instance.transferVelocity);
                 stateChanged = false;
                 timeBeforeChangeState.reset();
+                DELAY_TIME.reset();
+                DELAY_TIME_BEFORE_END.reset();
+                RUN_TIME.reset();
+                EXECUTED = false;
+                ENDED = false;
+                RUNNING = true;
             }
         } else if (gameObject instanceof Coin) {
+            GamePlayScene.CoinToNextLevel--;
+            this.HITCOIN = true;
             GamePlayScene.SCORE++;
         } else {
             this.isAlive = false;
+            playerExplode.config(this);
         }
     }
 
@@ -82,4 +117,6 @@ public class Player extends GameObject implements PhysicBody, HitObject {
             this.velocity = this.velocity.multiply(-1);
         }
     }
+
+
 }

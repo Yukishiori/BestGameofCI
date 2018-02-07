@@ -12,7 +12,6 @@ public class GameWindow extends JFrame {
 
     private long lastTime = 0;
     GameCanvas gameCanvas = new GameCanvas();
-
     public GameWindow() {
         this.getContentPane().setPreferredSize(new Dimension(Constant.Windows.WIDTH, Constant.Windows.HEIGHT));
         this.pack();

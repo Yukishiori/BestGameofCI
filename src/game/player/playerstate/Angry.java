@@ -9,7 +9,7 @@ import game.player.playerstate.particle.AngryParticle;
 
 import java.util.Random;
 
-public class Angry extends GameObject implements State {
+public class Angry implements State {
     private Random random = new Random();
 
     @Override
@@ -24,6 +24,21 @@ public class Angry extends GameObject implements State {
 
     @Override
     public void execute(Player player) {
-        player.velocity.set((Coin.instance.position.subtract(player.position)).normalize().multiply(7));
+        for (int i = 0; i < 2; i++) {
+            AngryParticle angryParticle = new AngryParticle();
+            GameObjectManager.instance.add(angryParticle);
+            angryParticle.lifeTime = new FrameCounter(random.nextInt(15) + 5);
+            angryParticle.position.set(player.position.x - i * 5, player.position.y - i * 3);
+        }
+        player.velocity.set((Coin.instance.position.subtract(player.position)).normalize().multiply(5));
+    }
+
+    @Override
+    public void infiniteEXE(Player player) {
+
+    }
+
+    @Override
+    public void end(Player player) {
     }
 }

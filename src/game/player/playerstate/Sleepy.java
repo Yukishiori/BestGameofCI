@@ -9,7 +9,7 @@ import game.player.playerstate.particle.SleepyParticle;
 
 import java.util.Random;
 
-public class Sleepy extends GameObject implements State {
+public class Sleepy implements State {
     private Random random = new Random();
 
     @Override
@@ -26,6 +26,12 @@ public class Sleepy extends GameObject implements State {
     @Override
     public void execute(Player player) {
         int i = random.nextInt(4);
+        for (int j = 0; j < 3; j++) {
+            SleepyParticle sleepyParticle = new SleepyParticle();
+            sleepyParticle.lifeTime = new FrameCounter(random.nextInt(15) + 5);
+            sleepyParticle.position.set(player.position.x - 10, player.position.y - 10);
+            sleepyParticle.velocity.set(i * -1 - 2, i * -1 - 2);
+        }
 //        System.out.println(i);
         if (i == 0) {
             player.velocity.set(0, random.nextInt(4) + 1);
@@ -36,5 +42,15 @@ public class Sleepy extends GameObject implements State {
         } else if (i == 3) {
             player.velocity.set(0, -1 * random.nextInt(4) - 1);
         }
+    }
+
+    @Override
+    public void infiniteEXE(Player player) {
+
+    }
+
+    @Override
+    public void end(Player player) {
+//        player.velocity.set(1,0);
     }
 }
