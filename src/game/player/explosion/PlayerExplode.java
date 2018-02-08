@@ -10,7 +10,7 @@ public class PlayerExplode {
     Random random = new Random();
 
     public void config(Player player) {
-        for (int i = 0; i <= 360; i += 360 / 17) {
+        for (int i = 0; i <= 360; i += 360 / 50) {
             PlayerExplosionParticle playerExplosionParticle = new PlayerExplosionParticle();
             GameObjectManager.instance.add(playerExplosionParticle);
             playerExplosionParticle.position.set(player.position);

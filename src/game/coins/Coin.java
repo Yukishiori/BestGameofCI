@@ -18,10 +18,10 @@ public class Coin extends GameObject implements PhysicBody, HitObject {
 
     public BoxCollider boxCollider = new BoxCollider(30, 30);
     private HitCoin hitCoin = new HitCoin();
-    public static Coin instance = GameObjectManager.instance.recycle(Coin.class);
+    public static Coin instance;
 
     public Coin() {
-        this.renderer = new AnimationRenderer(true, 3, Constant.Coin.PATH);
+        this.renderer = new AnimationRenderer(true, 5, Constant.Coin.PATH);
     }
 
     @Override

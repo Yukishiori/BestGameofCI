@@ -13,7 +13,7 @@ import java.util.Random;
 import java.util.Vector;
 
 public class PortalOut extends GameObject implements HitObject, PhysicBody {
-    public static PortalOut instance = GameObjectManager.instance.recycle(PortalOut.class);
+    public static PortalOut instance;
     public Vector2D transferVelocity;
     private ImageRenderer vertImage = new ImageRenderer(Constant.PortalOut.PATH_VERT);
     private ImageRenderer horiImage = new ImageRenderer(Constant.PortalOut.PATH_HORI);

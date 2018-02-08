@@ -10,16 +10,15 @@ import game.player.playerstate.DecideState;
 import game.player.playerstate.State;
 import game.portal.PortalIn;
 import game.portal.PortalOut;
-import game.text.DrawText;
 import game.wall.Wall;
 import hitCore.HitObject;
 import physics.BoxCollider;
 import physics.PhysicBody;
 import render.ImageRenderer;
+import scene.ChangeLevelScene;
 import scene.GamePlayScene;
 import scene.SceneManager;
 
-import java.awt.*;
 import java.util.Random;
 
 public class Player extends GameObject implements PhysicBody, HitObject {
@@ -42,8 +41,6 @@ public class Player extends GameObject implements PhysicBody, HitObject {
     private boolean CanGoInPortal = true;
     private FrameCounter PORTAL_TIME_OUT = new FrameCounter(Constant.Player.PORTAL_TIME_OUT_TIME);
     private PlayerExplode playerExplode = new PlayerExplode();
-//    public static Vector2D position = new Vector2D();
-
     public Player() {
         this.renderer = new ImageRenderer(Constant.Player.PATH);
         this.isAlive = true;
@@ -85,11 +82,8 @@ public class Player extends GameObject implements PhysicBody, HitObject {
         }
         if (this.position.x <= 0 || this.position.y <= 0 || this.position.x >= Constant.Windows.WIDTH || this.position.y >= Constant.Windows.HEIGHT) {
             this.isAlive = false;
-
-            //dangerous!!!!
-            SceneManager.instance.changeScene(new GamePlayScene());
-
-
+            playerExplode.config(this);
+            GamePlayScene.playerLife--;
         }
     }
 
@@ -104,31 +98,14 @@ public class Player extends GameObject implements PhysicBody, HitObject {
             if (PortalOut.instance.position != null) {
                 this.position.set(PortalOut.instance.getCenterPosition());
                 this.velocity.set(PortalOut.instance.transferVelocity);
-                stateChanged = false;
-                timeBeforeChangeState.reset();
-                DELAY_TIME.reset();
-                DELAY_TIME_BEFORE_END.reset();
-                RUN_TIME.reset();
-                EXECUTED = false;
-                ENDED = false;
-                RUNNING = true;
-                CanGoInPortal = false;
-                PORTAL_TIME_OUT.reset();
+                resetCounter();
             }
         } else if (gameObject instanceof PortalOut && CanGoInPortal) {
             if (PortalIn.instance.position != null) {
                 this.position.set(PortalIn.instance.getCenterPosition());
                 this.velocity.set(PortalIn.instance.transferVelocity);
-                stateChanged = false;
-                timeBeforeChangeState.reset();
-                DELAY_TIME.reset();
-                DELAY_TIME_BEFORE_END.reset();
-                RUN_TIME.reset();
-                EXECUTED = false;
-                ENDED = false;
-                RUNNING = true;
-                CanGoInPortal = false;
-                PORTAL_TIME_OUT.reset();
+                resetCounter();
+
             }
         } else if (gameObject instanceof Coin) {
             GamePlayScene.CoinToNextLevel--;
@@ -137,13 +114,28 @@ public class Player extends GameObject implements PhysicBody, HitObject {
         } else if (gameObject instanceof Wall) {
             this.isAlive = false;
             playerExplode.config(this);
+            GamePlayScene.playerLife--;
+
         }
     }
 
     private void clampPlayer() {
-        if (this.position.x == 0 || this.position.x == 800 || this.position.y == 0 || this.position.y == 800) {
+        if (this.position.x == 20 || this.position.x == 800 || this.position.y == 20 || this.position.y == 800) {
             this.velocity = this.velocity.multiply(-1);
         }
+    }
+
+    private void resetCounter() {
+        stateChanged = false;
+        timeBeforeChangeState.reset();
+        DELAY_TIME.reset();
+        DELAY_TIME_BEFORE_END.reset();
+        RUN_TIME.reset();
+        EXECUTED = false;
+        ENDED = false;
+        RUNNING = true;
+        CanGoInPortal = false;
+        PORTAL_TIME_OUT.reset();
     }
 
 

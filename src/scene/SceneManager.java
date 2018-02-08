@@ -2,7 +2,7 @@ package scene;
 
 public class SceneManager {
     public static SceneManager instance = new SceneManager();
-    private Scene currentScene;
+    public static Scene currentScene;
     private Scene nextScene;
 
     public void changeScene(Scene scene) {

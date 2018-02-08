@@ -19,11 +19,11 @@ public class GameCanvas extends JPanel {
     BufferedImage backBuffered;
     Graphics graphics;
     FrameCounter timeShowTarget = new FrameCounter(10);
-
+    FrameCounter frameCounter = new FrameCounter(500);
     public GameCanvas() {
         this.setupBackBuffered();
         this.setupCursor();
-        SceneManager.instance.changeScene(new GamePlayScene());
+        SceneManager.instance.changeScene(new ChangeLevelScene());
 
         this.setVisible(true);
     }
@@ -46,6 +46,7 @@ public class GameCanvas extends JPanel {
 
     public void runAll() {
         GameObjectManager.instance.runAll();
+        gameOverRun();
         SceneManager.instance.changeSceneIfNeeded();
 
     }
@@ -71,8 +72,24 @@ public class GameCanvas extends JPanel {
 
     private void showScoreBoard() {
         DrawText.drawText(graphics, Color.blue, " Score : " + GamePlayScene.SCORE * 100, new Vector2D(0, 20));
-        DrawText.drawText(graphics, Color.orange, Integer.toString(GamePlayScene.CoinToNextLevel), new Vector2D(705, 20));
+        if (GamePlayScene.CoinToNextLevel <= 0) {
+            DrawText.drawText(graphics, Color.BLACK, "0", new Vector2D(705, 20));
+        } else {
+            DrawText.drawText(graphics, Color.orange, Integer.toString(GamePlayScene.CoinToNextLevel), new Vector2D(705, 20));
+        }
         DrawText.drawText(graphics, Color.BLACK, " coin left", new Vector2D(725, 20));
+
+        //player life
+        DrawText.drawText(graphics, Color.RED, "Life : " + Integer.toString(GamePlayScene.playerLife), new Vector2D(10, 780));
+    }
+
+    public void gameOverRun() {
+        if (GamePlayScene.playerLife == 0) {
+            if (frameCounter.run()) {
+                SceneManager.instance.changeScene(new ChangeLevelScene());
+                frameCounter.reset();
+            }
+        }
     }
 }
 

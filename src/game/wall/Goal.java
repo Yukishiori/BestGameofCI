@@ -20,7 +20,6 @@ public class Goal extends GameObject implements PhysicBody, HitObject {
 
     @Override
     public void getHit(GameObject gameObject) {
-        System.out.println("u lose");
         SceneManager.instance.changeScene(new ChangeLevelScene());
     }
 

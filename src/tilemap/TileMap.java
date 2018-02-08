@@ -3,7 +3,10 @@ package tilemap;
 import constants.Constant;
 import constants.MapConstant;
 import core.GameObjectManager;
+import core.Vector2D;
 import game.invisibleBlock.InvisibleBlock;
+import game.player.GameObjectSpawner;
+import game.player.Player;
 import game.wall.Wall;
 
 import java.util.Vector;
@@ -18,6 +21,10 @@ public class TileMap {
         this.vector = new Vector<>();
         mapList.add(MapConstant.TileMap.map0);
         mapList.add(MapConstant.TileMap.map1);
+        mapList.add(MapConstant.TileMap.map2);
+        mapList.add(MapConstant.TileMap.map3);
+        mapList.add(MapConstant.TileMap.map4);
+
     }
 
     public void drawMap() {
@@ -27,6 +34,8 @@ public class TileMap {
                     Wall wall = GameObjectManager.instance.recycle(Wall.class);
                     wall.position.set(i * 50, j * 50);
                     this.vector.add(wall);
+                } else if (map[j][i] == 9) {
+                    setupPlayerSpawner(new Vector2D(i * 50, j * 50));
                 } else if (map[j][i] > 1) {
                     InvisibleBlock invisibleBlock = GameObjectManager.instance.recycle(InvisibleBlock.class);
                     invisibleBlock.position.set(i * 50, j * 50);
@@ -34,5 +43,13 @@ public class TileMap {
                 }
             }
         }
+    }
+
+    private void setupPlayerSpawner(Vector2D position) {
+        GameObjectSpawner playerSpawner = GameObjectManager.instance.recycle(GameObjectSpawner.class);
+        playerSpawner.position.set(position);
+        Player player = GameObjectManager.instance.recycle(Player.class);
+        player.position.set(position);
+        player.velocity.set(2, 0);
     }
 }

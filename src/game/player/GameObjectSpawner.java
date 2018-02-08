@@ -2,6 +2,7 @@ package game.player;
 
 import core.GameObject;
 import core.GameObjectManager;
+import game.coins.Coin;
 import game.wall.Goal;
 import game.wall.Wall;
 import scene.GamePlayScene;
@@ -21,10 +22,14 @@ public class GameObjectSpawner extends GameObject {
     public void run() {
         super.run();
         // playerSpawner
+
         Player player = GameObjectManager.instance.getPlayer();
-        if (player.isAlive == false) {
+//        if (player == null) {
+//            player = GameObjectManager.instance.recycle(Player.class);
+//        }
+        if (!player.isAlive && GamePlayScene.playerLife > 0) {
             player.isAlive = true;
-            player.position.set(200, 200);
+            player.position.set(this.position);
             player.velocity.set(2, 0);
         }
 
@@ -35,6 +40,12 @@ public class GameObjectSpawner extends GameObject {
             goal.position.set(wall.position);
             goal.boxCollider.position.set(wall.position);
             created = true;
+        }
+        if (!Coin.instance.isAlive && GamePlayScene.CoinToNextLevel > 0) {
+            Coin.instance = new Coin();
+            GameObjectManager.instance.add(Coin.instance);
+            Coin.instance.position.set(random.nextInt(680) + 60, random.nextInt(680) + 60);
+
         }
     }
 }

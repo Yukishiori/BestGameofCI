@@ -12,7 +12,7 @@ import render.ImageRenderer;
 import java.util.Random;
 
 public class PortalIn extends GameObject implements PhysicBody, HitObject {
-    public static PortalIn instance = GameObjectManager.instance.recycle(PortalIn.class);
+    public static PortalIn instance;
     private ImageRenderer vertImage = new ImageRenderer(Constant.PortalIn.PATH_VERT);
     private ImageRenderer horiImage = new ImageRenderer(Constant.PortalIn.PATH_HORI);
     public BoxCollider boxCollider;
