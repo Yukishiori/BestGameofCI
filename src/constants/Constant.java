@@ -80,28 +80,11 @@ public class Constant {
 
     public static class Sound {
         public static final String BGM = "";
-        public static final String[] WARP_SFX = {
-                "Soundtrack/piano1.wav",
-                "Soundtrack/piano2.wav",
-                "Soundtrack/piano3.wav",
-                "Soundtrack/piano4.wav",
-                "Soundtrack/piano5.wav",
-                "Soundtrack/piano6.wav",
-                "Soundtrack/piano7.wav",
-                "Soundtrack/piano8.wav",
-                "Soundtrack/piano9.wav",
-                "Soundtrack/piano10.wav",
-                "Soundtrack/piano11.wav",
-                "Soundtrack/piano12.wav",
-                "Soundtrack/piano13.wav",
-                "Soundtrack/piano14.wav"
-        };
-        public static final String BROKEN = "Soundtrack/Broken_Glass_Sounds_-_Most_recent_6.wav";
+        public static final String WARP_SFX = "Soundtrack/warp.wav";
     }
 
     public static class Logo {
         public static final String PATH = "Assets/Logo.png";
     }
-
 }
 
