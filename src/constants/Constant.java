@@ -79,7 +79,7 @@ public class Constant {
     }
 
     public static class Sound {
-        public static final String BGM = "";
+        public static final String BGM = "Soundtrack/bgm.wav";
         public static final String[] WARP_SFX = {
                 "Soundtrack/piano1.wav",
                 "Soundtrack/piano2.wav",
@@ -97,6 +97,11 @@ public class Constant {
                 "Soundtrack/piano14.wav"
         };
         public static final String BROKEN = "Soundtrack/Broken_Glass_Sounds_-_Most_recent_6.wav";
+        public static final String LOVE_SOUND = "Soundtrack/love.wav";
+        public static final String ANGRY_SOUND = "Soundtrack/angry.wav";
+        public static final String SLEEP_SOUND = "Soundtrack/sleepy.wav";
+        public static final String COIN_HIT = "Soundtrack/334298_sojan_coinflic4.wav";
+
     }
 
     public static class Logo {

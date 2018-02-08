@@ -27,18 +27,19 @@ public class GamePlayScene implements Scene {
         STAGE++;
         setupBackround();
         this.setupCursor();
-//        PrePortal.instance.position.set(0, 0);
-//        PrePortal.instance.config(2);
         resetScore();
         setupCoinSpawner();
         setupMap();
+        soungBackground();
+        this.clip.loop(-1);
+        this.clip.start();
 //        setupPlayer();
     }
 
     @Override
     public void deinit() {
         GameObjectManager.instance.clear();
-//        this.clip.stop();
+        this.clip.stop();
     }
 
     public void resetScore() {
@@ -76,7 +77,7 @@ public class GamePlayScene implements Scene {
     }
 
     private void soungBackground() {
-//        this.clip = AudioUtils.instance.loadSound(Constant.Sound.BGM);
+        this.clip = AudioUtils.instance.loadSound(Constant.Sound.BGM);
 
     }
 

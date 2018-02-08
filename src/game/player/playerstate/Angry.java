@@ -1,12 +1,15 @@
 package game.player.playerstate;
 
+import constants.Constant;
 import core.FrameCounter;
 import core.GameObject;
 import core.GameObjectManager;
 import game.coins.Coin;
 import game.player.Player;
 import game.player.playerstate.particle.AngryParticle;
+import utils.AudioUtils;
 
+import javax.sound.sampled.Clip;
 import java.util.Random;
 
 public class Angry implements State {
@@ -19,7 +22,7 @@ public class Angry implements State {
         angryParticle.lifeTime = new FrameCounter(random.nextInt(10) + 30);
         angryParticle.position.set(player.position.x + random.nextInt(25), player.position.y - 20);
         angryParticle.velocity.set(player.velocity);
-
+        setupAngrySound();
     }
 
     @Override
@@ -41,4 +44,11 @@ public class Angry implements State {
     @Override
     public void end(Player player) {
     }
+
+    private void setupAngrySound() {
+        Clip angryClip = AudioUtils.instance.loadSound(Constant.Sound.ANGRY_SOUND);
+        angryClip.loop(0);
+        angryClip.start();
+    }
+
 }

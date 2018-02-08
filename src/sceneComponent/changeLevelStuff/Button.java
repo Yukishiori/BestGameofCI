@@ -15,6 +15,7 @@ public class Button extends GameObject implements PhysicBody {
 
     public Button() {
         this.renderer = new ImageRenderer(Constant.Wall.PATH);
+        this.position.set(200, 700);
     }
 
     @Override

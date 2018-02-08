@@ -1,12 +1,15 @@
 package game.player.playerstate;
 
+import constants.Constant;
 import core.FrameCounter;
 import core.GameObject;
 import core.GameObjectManager;
 import core.Vector2D;
 import game.player.Player;
 import game.player.playerstate.particle.SleepyParticle;
+import utils.AudioUtils;
 
+import javax.sound.sampled.Clip;
 import java.util.Random;
 
 public class Sleepy implements State {
@@ -20,7 +23,7 @@ public class Sleepy implements State {
         sleepyParticle.position.set(player.position.x - 12, player.position.y - 12);
         sleepyParticle.velocity.set(-3, -3);
         player.velocity.set(0, 0);
-
+        setupSleepSound();
     }
 
     @Override
@@ -52,5 +55,11 @@ public class Sleepy implements State {
     @Override
     public void end(Player player) {
 //        player.velocity.set(1,0);
+    }
+
+    private void setupSleepSound() {
+        Clip sleepClip = AudioUtils.instance.loadSound(Constant.Sound.SLEEP_SOUND);
+        sleepClip.loop(0);
+        sleepClip.start();
     }
 }

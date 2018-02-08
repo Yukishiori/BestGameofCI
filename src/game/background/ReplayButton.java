@@ -22,7 +22,9 @@ public class ReplayButton extends GameObject {
                 MouseMotionInput.instance.position.y >= 260 &&  MouseMotionInput.instance.position.y <= 325) {
             this.renderer = imageRendererReplayHover;
             if(MouseInput.instance.mousePressed) {
+                GamePlayScene.STAGE = -1;
                 SceneManager.instance.changeScene(new GamePlayScene());
+
             }
         } else {
             this.renderer = imageRendererReplay;

@@ -116,6 +116,7 @@ public class Player extends GameObject implements PhysicBody, HitObject {
             }
         } else if (gameObject instanceof Coin) {
             GamePlayScene.CoinToNextLevel--;
+            setupCoinSound();
             this.HITCOIN = true;
             GamePlayScene.SCORE++;
         } else if (gameObject instanceof Wall) {
@@ -156,5 +157,13 @@ public class Player extends GameObject implements PhysicBody, HitObject {
         brokenClip.loop(0);
         brokenClip.start();
     }
+
+    private void setupCoinSound() {
+        Clip coinClip = AudioUtils.instance.loadSound(Constant.Sound.COIN_HIT);
+        coinClip.loop(0);
+        coinClip.start();
+    }
+
+
 
 }
