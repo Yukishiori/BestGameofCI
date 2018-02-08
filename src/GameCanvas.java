@@ -47,17 +47,17 @@ public class GameCanvas extends JPanel {
 
     public void runAll() {
         GameObjectManager.instance.runAll();
-        if (GamePlayScene.STAGE > -1) {
-            gameOverRun();
-            showScoreBoard();
-        }
+
         SceneManager.instance.changeSceneIfNeeded();
 
     }
 
     public void renderAll() {
         GameObjectManager.instance.renderAll(this.graphics);
-
+        if (GamePlayScene.STAGE > -1) {
+            gameOverRun();
+            showScoreBoard();
+        }
 
         if (Player.HITCOIN) {
             showCoinLeft();

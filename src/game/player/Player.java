@@ -163,7 +163,4 @@ public class Player extends GameObject implements PhysicBody, HitObject {
         coinClip.loop(0);
         coinClip.start();
     }
-
-
-
 }
