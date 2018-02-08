@@ -24,7 +24,7 @@ public class GameCanvas extends JPanel {
     public GameCanvas() {
         this.setupBackBuffered();
         this.setupCursor();
-        SceneManager.instance.changeScene(new ChangeLevelScene());
+        SceneManager.instance.changeScene(new StartGameScene());
 
         this.setVisible(true);
     }
@@ -47,9 +47,10 @@ public class GameCanvas extends JPanel {
 
     public void runAll() {
         GameObjectManager.instance.runAll();
-        gameOverRun();
-        showScoreBoard();
-
+        if (GamePlayScene.STAGE > -1) {
+            gameOverRun();
+            showScoreBoard();
+        }
         SceneManager.instance.changeSceneIfNeeded();
 
     }
@@ -87,7 +88,7 @@ public class GameCanvas extends JPanel {
     }
 
     public void gameOverRun() {
-        if (GamePlayScene.playerLife == 0) {
+        if (GamePlayScene.playerLife == 0 && GamePlayScene.STAGE > -1) {
             if (frameCounter.run()) {
                 SceneManager.instance.changeScene(new ChangeLevelScene());
                 frameCounter.reset();
