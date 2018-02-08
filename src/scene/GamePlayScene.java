@@ -1,5 +1,6 @@
 package scene;
 
+import constants.Constant;
 import constants.MapConstant;
 import core.GameObjectManager;
 import game.background.Background;
@@ -9,6 +10,9 @@ import game.portal.PortalIn;
 import game.portal.PortalOut;
 import game.portal.PrePortal;
 import tilemap.TileMap;
+import utils.AudioUtils;
+
+import javax.sound.sampled.*;
 
 public class GamePlayScene implements Scene {
 
@@ -16,6 +20,8 @@ public class GamePlayScene implements Scene {
     public static int SCORE = 0;
     public static int CoinToNextLevel = 10;
     public static int playerLife;
+
+    private Clip clip;
     @Override
     public void init() {
         STAGE++;
@@ -32,20 +38,14 @@ public class GamePlayScene implements Scene {
     @Override
     public void deinit() {
         GameObjectManager.instance.clear();
+//        this.clip.stop();
     }
 
     public void resetScore() {
         this.CoinToNextLevel = MapConstant.MapData.COIN_TO_NEXT_LEVEL[STAGE];
+        ;
         this.playerLife = MapConstant.MapData.PLAYER_LIFE[STAGE];
     }
-
-//    private void setupPlayer() {
-//        Player player = GameObjectManager.instance.recycle(Player.class);
-//        player.position.set(200, 200);
-//        player.velocity.set(3, 0);
-//        player.isAlive = false;
-//        GameObjectSpawner playerSpawner = GameObjectManager.instance.recycle(GameObjectSpawner.class);
-//    }
 
     private void setupBackround() {
         GameObjectManager.instance.recycle(Background.class);
@@ -54,6 +54,8 @@ public class GamePlayScene implements Scene {
     private void setupCursor() {
         GameObjectManager.instance.recycle(Cursor.class);
         PrePortal.instance = GameObjectManager.instance.recycle(PrePortal.class);
+        PrePortal.instance.position.set(101, 51);
+        PrePortal.instance.config(5);
         PortalOut.instance = GameObjectManager.instance.recycle(PortalOut.class);
         PortalOut.instance.position.set(-100, -100);
         PortalOut.instance.config(2);
@@ -72,4 +74,10 @@ public class GamePlayScene implements Scene {
         TileMap.instance.map = TileMap.instance.mapList.elementAt(STAGE);
         TileMap.instance.drawMap();
     }
+
+    private void soungBackground() {
+//        this.clip = AudioUtils.instance.loadSound(Constant.Sound.BGM);
+
+    }
+
 }

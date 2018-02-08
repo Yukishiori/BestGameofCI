@@ -16,7 +16,7 @@ public class Sleepy implements State {
     public void run(Player player) {
         SleepyParticle sleepyParticle = new SleepyParticle();
         GameObjectManager.instance.add(sleepyParticle);
-        sleepyParticle.lifeTime = new FrameCounter(random.nextInt(15) + 5);
+        sleepyParticle.lifeTime = new FrameCounter(random.nextInt(15) + 30);
         sleepyParticle.position.set(player.position.x - 12, player.position.y - 12);
         sleepyParticle.velocity.set(-3, -3);
         player.velocity.set(0, 0);
@@ -28,7 +28,7 @@ public class Sleepy implements State {
         int i = random.nextInt(4);
         for (int j = 0; j < 3; j++) {
             SleepyParticle sleepyParticle = new SleepyParticle();
-            sleepyParticle.lifeTime = new FrameCounter(random.nextInt(15) + 5);
+            sleepyParticle.lifeTime = new FrameCounter(random.nextInt(15) + 30);
             sleepyParticle.position.set(player.position.x - 10, player.position.y - 10);
             sleepyParticle.velocity.set(i * -1 - 2, i * -1 - 2);
         }

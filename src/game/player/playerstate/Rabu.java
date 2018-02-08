@@ -20,7 +20,7 @@ public class Rabu implements State {
 
             HeartParticle heartParticle = new HeartParticle();
             GameObjectManager.instance.add(heartParticle);
-            heartParticle.lifeTime = new FrameCounter(random.nextInt(15) + 5);
+            heartParticle.lifeTime = new FrameCounter(random.nextInt(15) + 30);
             heartParticle.position.set(player.position.x - 10, player.position.y - 10);
             heartParticle.velocity.set(i * -3 - 2, i * -3 - 2);
         }
@@ -31,7 +31,7 @@ public class Rabu implements State {
         for (int i = 0; i < 3; i++) {
             HeartParticle heartParticle = new HeartParticle();
             GameObjectManager.instance.add(heartParticle);
-            heartParticle.lifeTime = new FrameCounter(random.nextInt(15) + 5);
+            heartParticle.lifeTime = new FrameCounter(random.nextInt(15) + 30);
             heartParticle.position.set(player.position.x - i * 10, player.position.y - 10);
             heartParticle.velocity.set(i * -3 - 2, i * -3 - 2);
 

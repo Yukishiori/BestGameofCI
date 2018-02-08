@@ -45,7 +45,6 @@ public class GameObjectSpawner extends GameObject {
             Coin.instance = new Coin();
             GameObjectManager.instance.add(Coin.instance);
             Coin.instance.position.set(random.nextInt(680) + 60, random.nextInt(680) + 60);
-
         }
     }
 }

@@ -1,5 +1,6 @@
 package game.background;
 
+import constants.Constant;
 import core.GameObject;
 import render.ImageRenderer;
 
@@ -7,7 +8,7 @@ import java.awt.*;
 
 public class Background extends GameObject{
     public Background() {
-        this.renderer = new ImageRenderer("Assets/background2.png");
+        this.renderer = new ImageRenderer(Constant.Background.PATH);
         this.position.set(0,0);
     }
 

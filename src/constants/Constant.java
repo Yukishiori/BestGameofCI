@@ -12,7 +12,7 @@ public class Constant {
     public static class Wall {
         public static final int WIDTH = 50;
         public static final int HEIGHT = 50;
-        public static final String PATH = "Assets/Wall.png";
+        public static final String PATH = "ChienAssets/wall.png";
     }
 
     public static class Cursor {
@@ -49,7 +49,7 @@ public class Constant {
     }
 
     public static class Player {
-        public static String PATH = "Assets/Player2.png";
+        public static String PATH = "Assets/ball.png";
         public static final int TIME_BEFORE_CHANGE_STATE = 80;
         public static final int PLUS_TIME = 45;
         public static final int WIDTH = 30;
@@ -66,9 +66,25 @@ public class Constant {
 
     public static class PlayerExplosionParticle {
         public static String[] PATHS = {
-                "Assets/player/dead 1.png",
-                "Assets/player/dead_2.png",
-                "Assets/player/dead_3.png"
+                "Assets/playerParticle /New Piskel.png",
+                "Assets/playerParticle /New Piskel (1).png",
+                "Assets/playerParticle /New Piskel (2).png",
+                "Assets/playerParticle /New Piskel (3).png",
+                "Assets/playerParticle /New Piskel (4).png"
         };
     }
+
+    public static class Background {
+        public static final String PATH = "ChienAssets/bg.png";
+    }
+
+    public static class Sound {
+        public static final String BGM = "";
+        public static final String WARP_SFX = "Soundtrack/warp.wav";
+    }
+
+    public static class Logo {
+        public static final String PATH = "Assets/Logo.png";
+    }
 }
+

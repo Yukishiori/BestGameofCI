@@ -16,7 +16,7 @@ public class Angry implements State {
     public void run(Player player) {
         AngryParticle angryParticle = new AngryParticle();
         GameObjectManager.instance.add(angryParticle);
-        angryParticle.lifeTime = new FrameCounter(random.nextInt(10) + 3);
+        angryParticle.lifeTime = new FrameCounter(random.nextInt(10) + 30);
         angryParticle.position.set(player.position.x + random.nextInt(25), player.position.y - 20);
         angryParticle.velocity.set(player.velocity);
 
@@ -27,7 +27,7 @@ public class Angry implements State {
         for (int i = 0; i < 2; i++) {
             AngryParticle angryParticle = new AngryParticle();
             GameObjectManager.instance.add(angryParticle);
-            angryParticle.lifeTime = new FrameCounter(random.nextInt(15) + 5);
+            angryParticle.lifeTime = new FrameCounter(random.nextInt(15) + 30);
             angryParticle.position.set(player.position.x - i * 5, player.position.y - i * 3);
         }
         player.velocity.set((Coin.instance.position.subtract(player.position)).normalize().multiply(5));

@@ -1,6 +1,6 @@
 package scene;
 
-import changeLevelStuff.Button;
+import sceneComponent.changeLevelStuff.Button;
 import core.GameObjectManager;
 
 public class ChangeLevelScene implements Scene {
@@ -19,4 +19,5 @@ public class ChangeLevelScene implements Scene {
         Button button = GameObjectManager.instance.recycle(Button.class);
         button.position.set(200, 300);
     }
+
 }

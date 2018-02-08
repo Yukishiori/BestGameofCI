@@ -9,6 +9,7 @@ import input.MouseMotionInput;
 import scene.ChangeLevelScene;
 import scene.GamePlayScene;
 import scene.SceneManager;
+import scene.StartGameScene;
 
 import javax.swing.*;
 import java.awt.*;
@@ -47,13 +48,15 @@ public class GameCanvas extends JPanel {
     public void runAll() {
         GameObjectManager.instance.runAll();
         gameOverRun();
+        showScoreBoard();
+
         SceneManager.instance.changeSceneIfNeeded();
 
     }
 
     public void renderAll() {
         GameObjectManager.instance.renderAll(this.graphics);
-        showScoreBoard();
+
 
         if (Player.HITCOIN) {
             showCoinLeft();
@@ -67,17 +70,17 @@ public class GameCanvas extends JPanel {
 
     public void showCoinLeft() {
         Player player = GameObjectManager.instance.getPlayer();
-        DrawText.drawText(graphics, Color.RED, "+1", player.position.add(-10, -10));
+        DrawText.drawText(graphics, Color.YELLOW, "+1", player.position.add(-10, -10));
     }
 
     private void showScoreBoard() {
         DrawText.drawText(graphics, Color.blue, " Score : " + GamePlayScene.SCORE * 100, new Vector2D(0, 20));
         if (GamePlayScene.CoinToNextLevel <= 0) {
-            DrawText.drawText(graphics, Color.BLACK, "0", new Vector2D(705, 20));
+            DrawText.drawText(graphics, Color.WHITE, "0", new Vector2D(705, 20));
         } else {
             DrawText.drawText(graphics, Color.orange, Integer.toString(GamePlayScene.CoinToNextLevel), new Vector2D(705, 20));
         }
-        DrawText.drawText(graphics, Color.BLACK, " coin left", new Vector2D(725, 20));
+        DrawText.drawText(graphics, Color.WHITE, " coin left", new Vector2D(725, 20));
 
         //player life
         DrawText.drawText(graphics, Color.RED, "Life : " + Integer.toString(GamePlayScene.playerLife), new Vector2D(10, 780));

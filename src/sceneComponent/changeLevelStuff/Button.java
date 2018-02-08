@@ -1,8 +1,7 @@
-package changeLevelStuff;
+package sceneComponent.changeLevelStuff;
 
 import constants.Constant;
 import core.GameObject;
-import hitCore.HitObject;
 import input.MouseInput;
 import input.MouseMotionInput;
 import physics.BoxCollider;
