@@ -15,7 +15,6 @@ import hitCore.HitObject;
 import physics.BoxCollider;
 import physics.PhysicBody;
 import render.ImageRenderer;
-import scene.ChangeLevelScene;
 import scene.GamePlayScene;
 import utils.AudioUtils;
 
@@ -43,12 +42,11 @@ public class Player extends GameObject implements PhysicBody, HitObject {
     private boolean CanGoInPortal = true;
     private FrameCounter PORTAL_TIME_OUT = new FrameCounter(Constant.Player.PORTAL_TIME_OUT_TIME);
     private PlayerExplode playerExplode = new PlayerExplode();
-    private Clip warpClip;
     private Clip deadClip;
 
     public Player() {
         this.renderer = new ImageRenderer(Constant.Player.PATH);
-        setupSound();
+        setupWarpSound();
         this.isAlive = true;
         this.boxCollider = new BoxCollider(Constant.Player.WIDTH, Constant.Player.HEIGHT);
     }
@@ -90,6 +88,7 @@ public class Player extends GameObject implements PhysicBody, HitObject {
             this.isAlive = false;
             playerExplode.config(this);
             GamePlayScene.playerLife--;
+            setupDeathSound();
         }
     }
 
@@ -102,16 +101,14 @@ public class Player extends GameObject implements PhysicBody, HitObject {
     public void getHit(GameObject gameObject) {
         if (gameObject instanceof PortalIn && CanGoInPortal) {
             if (PortalOut.instance.position != null) {
-                warpClip.loop(1);
-                warpClip.start();
+                setupWarpSound();
                 this.position.set(PortalOut.instance.getCenterPosition());
                 this.velocity.set(PortalOut.instance.transferVelocity);
                 resetCounter();
             }
         } else if (gameObject instanceof PortalOut && CanGoInPortal) {
             if (PortalIn.instance.position != null) {
-                warpClip.loop(1);
-                warpClip.start();
+                setupWarpSound();
                 this.position.set(PortalIn.instance.getCenterPosition());
                 this.velocity.set(PortalIn.instance.transferVelocity);
                 resetCounter();
@@ -125,7 +122,7 @@ public class Player extends GameObject implements PhysicBody, HitObject {
             this.isAlive = false;
             playerExplode.config(this);
             GamePlayScene.playerLife--;
-
+            setupDeathSound();
         }
     }
 
@@ -148,9 +145,16 @@ public class Player extends GameObject implements PhysicBody, HitObject {
         PORTAL_TIME_OUT.reset();
     }
 
-    private void setupSound() {
-        this.warpClip = AudioUtils.instance.loadSound(Constant.Sound.WARP_SFX);
+    private void setupWarpSound() {
+        Clip warpClip = AudioUtils.instance.loadSound(Constant.Sound.WARP_SFX[random.nextInt(Constant.Sound.WARP_SFX.length - 1)]);
+        warpClip.loop(0);
+        warpClip.start();
     }
 
+    private void setupDeathSound() {
+        Clip brokenClip = AudioUtils.instance.loadSound(Constant.Sound.BROKEN);
+        brokenClip.loop(0);
+        brokenClip.start();
+    }
 
 }
