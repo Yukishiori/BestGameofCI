@@ -1,4 +1,4 @@
-package sceneComponent.startgameStuff;
+package sceneComponent;
 
 import core.GameObject;
 import input.MouseInput;
@@ -7,38 +7,36 @@ import physics.BoxCollider;
 import physics.PhysicBody;
 import render.ImageRenderer;
 import scene.GamePlayScene;
-import scene.HelpScene;
 import scene.SceneManager;
+import scene.StartGameScene;
 
-public class HelpButton extends GameObject implements PhysicBody {
-    public BoxCollider boxCollider = new BoxCollider(120, 80);
+public class ReplayButton extends GameObject implements PhysicBody {
+    BoxCollider boxCollider = new BoxCollider(120, 80);
 
-    public HelpButton() {
-        this.renderer = new ImageRenderer("Assets/help (2).png");
-        this.position.set(672, 736);
+    public ReplayButton() {
+        this.renderer = new ImageRenderer("Assets/replay.png");
     }
 
     @Override
     public void run() {
         super.run();
-
         this.boxCollider.position.set(this.position);
         if (MouseMotionInput.instance.position.x >= this.boxCollider.position.x &&
                 MouseMotionInput.instance.position.x <= this.boxCollider.position.x + this.boxCollider.width &&
                 MouseMotionInput.instance.position.y <= this.boxCollider.position.y + this.boxCollider.height &&
                 MouseMotionInput.instance.position.y >= this.boxCollider.position.y) {
-            this.renderer = new ImageRenderer("Assets/help (3).png");
+            this.renderer = new ImageRenderer("Assets/replay (1).png");
             if (MouseInput.instance.leftMouse) {
-                SceneManager.instance.changeScene(new HelpScene());
+                SceneManager.instance.changeScene(new StartGameScene());
                 MouseInput.instance.leftMouse = false;
             }
         } else {
-            this.renderer = new ImageRenderer("Assets/help (2).png");
+            this.renderer = new ImageRenderer("Assets/replay.png");
         }
     }
 
     @Override
     public BoxCollider getBoxCollider() {
-        return this.boxCollider;
+        return null;
     }
 }

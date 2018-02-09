@@ -13,8 +13,8 @@ public class StartButton extends GameObject implements PhysicBody {
     public BoxCollider boxCollider = new BoxCollider(120, 80);
 
     public StartButton() {
-        this.renderer = new ImageRenderer("Assets/playBtn.png");
-        this.position.set(250, 600);
+        this.renderer = new ImageRenderer("Assets/play.png");
+        this.position.set(0, 700);
     }
 
     @Override
@@ -30,13 +30,13 @@ public class StartButton extends GameObject implements PhysicBody {
                 MouseMotionInput.instance.position.x <= this.boxCollider.position.x + this.boxCollider.width &&
                 MouseMotionInput.instance.position.y <= this.boxCollider.position.y + this.boxCollider.height &&
                 MouseMotionInput.instance.position.y >= this.boxCollider.position.y) {
-            this.renderer = new ImageRenderer("Assets/playBtn2.png");
+            this.renderer = new ImageRenderer("Assets/play (1).png");
             if (MouseInput.instance.leftMouse) {
                 SceneManager.instance.changeScene(new GamePlayScene());
                 MouseInput.instance.leftMouse = false;
             }
         } else {
-            this.renderer = new ImageRenderer("Assets/playBtn.png");
+            this.renderer = new ImageRenderer("Assets/play.png");
         }
     }
 }

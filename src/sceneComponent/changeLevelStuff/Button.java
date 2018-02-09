@@ -27,14 +27,14 @@ public class Button extends GameObject implements PhysicBody {
     public void run() {
         super.run();
         this.boxCollider.position.set(this.position);
-        if (MouseMotionInput.instance.position.x >= this.boxCollider.position.x - this.boxCollider.width / 2 &&
-                MouseMotionInput.instance.position.x <= this.boxCollider.position.x + this.boxCollider.width / 2 &&
-                MouseMotionInput.instance.position.y <= this.boxCollider.position.y + this.boxCollider.height / 2 &&
-                MouseMotionInput.instance.position.y >= this.boxCollider.position.y - this.boxCollider.height / 2) {
-//            System.out.println("bITHC");
-            if (MouseInput.instance.rightMouse) {
+        if (MouseMotionInput.instance.position.x >= this.boxCollider.position.x &&
+                MouseMotionInput.instance.position.x <= this.boxCollider.position.x + this.boxCollider.width &&
+                MouseMotionInput.instance.position.y <= this.boxCollider.position.y + this.boxCollider.height &&
+                MouseMotionInput.instance.position.y >= this.boxCollider.position.y) {
+
+            if (MouseInput.instance.leftMouse) {
                 SceneManager.instance.changeScene(new GamePlayScene());
-                MouseInput.instance.rightMouse = false;
+                MouseInput.instance.leftMouse = false;
             }
         }
     }

@@ -108,5 +108,26 @@ public class Constant {
         public static final String PATH = "Assets/Logo.png";
     }
 
+    public static class Fireworks {
+        public static final String[] PATHS = {
+                "Assets/player/dead 1.png",
+                "Assets/player/dead_2.png",
+                "Assets/player/dead_3.png",
+                "Assets/player/dead_3.png"
+
+        };
+    }
+
+    public static class Goal {
+        public static final String[] PATHS = {
+                "Assets/goal1.png",
+                "Assets/goal2.png",
+                "Assets/goal3.png",
+                "Assets/goal4.png",
+                "Assets/goal5.png",
+                "Assets/goal6.png",
+                "Assets/goal7.png"
+        };
+    }
 }
 

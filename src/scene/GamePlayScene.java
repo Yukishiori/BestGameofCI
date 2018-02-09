@@ -78,7 +78,6 @@ public class GamePlayScene implements Scene {
 
     private void soungBackground() {
         this.clip = AudioUtils.instance.loadSound(Constant.Sound.BGM);
-
     }
 
 }

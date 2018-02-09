@@ -2,29 +2,29 @@ import core.FrameCounter;
 import core.GameObjectManager;
 import core.Vector2D;
 import game.coins.HitCoin;
+import game.fireworks.Fireworks;
 import game.player.Player;
 import game.text.DrawText;
 import input.MouseInput;
 import input.MouseMotionInput;
-import scene.ChangeLevelScene;
-import scene.GamePlayScene;
-import scene.SceneManager;
-import scene.StartGameScene;
+import scene.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
 public class GameCanvas extends JPanel {
 
     BufferedImage backBuffered;
     Graphics graphics;
     FrameCounter timeShowTarget = new FrameCounter(10);
-    FrameCounter frameCounter = new FrameCounter(500);
+    FrameCounter frameCounter = new FrameCounter(300);
+    Random random = new Random();
     public GameCanvas() {
         this.setupBackBuffered();
         this.setupCursor();
-        SceneManager.instance.changeScene(new StartGameScene());
+        SceneManager.instance.changeScene(new GameOverScene());
 
         this.setVisible(true);
     }
@@ -47,7 +47,6 @@ public class GameCanvas extends JPanel {
 
     public void runAll() {
         GameObjectManager.instance.runAll();
-
         SceneManager.instance.changeSceneIfNeeded();
 
     }
@@ -90,10 +89,12 @@ public class GameCanvas extends JPanel {
     public void gameOverRun() {
         if (GamePlayScene.playerLife == 0 && GamePlayScene.STAGE > -1) {
             if (frameCounter.run()) {
-                SceneManager.instance.changeScene(new ChangeLevelScene());
+                SceneManager.instance.changeScene(new GameOverScene());
                 frameCounter.reset();
             }
         }
     }
+
+
 }
 

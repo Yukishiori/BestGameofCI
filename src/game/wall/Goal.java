@@ -1,9 +1,11 @@
 package game.wall;
 
+import constants.Constant;
 import core.GameObject;
 import hitCore.HitObject;
 import physics.BoxCollider;
 import physics.PhysicBody;
+import render.AnimationRenderer;
 import render.ImageRenderer;
 import scene.ChangeLevelScene;
 import scene.SceneManager;
@@ -15,7 +17,7 @@ public class Goal extends GameObject implements PhysicBody, HitObject {
     public BoxCollider boxCollider = new BoxCollider(51, 51);
 
     public Goal() {
-        this.renderer = new ImageRenderer("Assets/goal.png");
+        this.renderer = new AnimationRenderer(true, 1, Constant.Goal.PATHS);
     }
 
     @Override
