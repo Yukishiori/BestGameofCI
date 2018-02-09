@@ -16,7 +16,7 @@ import java.util.Random;
 public class GameObjectSpawner extends GameObject {
     private Random random = new Random();
     private boolean created = false;
-    private FrameCounter frameCounter = new FrameCounter(300);
+    private FrameCounter frameCounter = new FrameCounter(250);
     private Fireworks fireworks = new Fireworks();
     public GameObjectSpawner() {
 

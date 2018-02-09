@@ -25,6 +25,9 @@ public class GamePlayScene implements Scene {
     @Override
     public void init() {
         STAGE++;
+        if (STAGE > TileMap.vector.size()) {
+            SceneManager.instance.changeScene(new GameOverScene());
+        }
         setupBackround();
         this.setupCursor();
         resetScore();

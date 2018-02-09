@@ -25,6 +25,7 @@ public class TileMap {
         mapList.add(MapConstant.TileMap.map2);
         mapList.add(MapConstant.TileMap.map3);
         mapList.add(MapConstant.TileMap.map4);
+        mapList.add(MapConstant.TileMap.map6);
         mapList.add(MapConstant.TileMap.map5);
     }
 

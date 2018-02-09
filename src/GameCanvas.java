@@ -19,12 +19,12 @@ public class GameCanvas extends JPanel {
     BufferedImage backBuffered;
     Graphics graphics;
     FrameCounter timeShowTarget = new FrameCounter(10);
-    FrameCounter frameCounter = new FrameCounter(300);
+    FrameCounter frameCounter = new FrameCounter(220);
     Random random = new Random();
     public GameCanvas() {
         this.setupBackBuffered();
         this.setupCursor();
-        SceneManager.instance.changeScene(new GameOverScene());
+        SceneManager.instance.changeScene(new StartGameScene());
 
         this.setVisible(true);
     }

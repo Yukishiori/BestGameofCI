@@ -29,6 +29,8 @@ public class ReplayButton extends GameObject implements PhysicBody {
             if (MouseInput.instance.leftMouse) {
                 SceneManager.instance.changeScene(new StartGameScene());
                 MouseInput.instance.leftMouse = false;
+                GamePlayScene.STAGE = -1;
+                GamePlayScene.playerLife = 1;
             }
         } else {
             this.renderer = new ImageRenderer("Assets/replay.png");

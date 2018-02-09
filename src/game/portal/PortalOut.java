@@ -31,23 +31,23 @@ public class PortalOut extends GameObject implements HitObject, PhysicBody {
             this.boxCollider = new BoxCollider(25, 50);
             this.boxCollider.position.set(this.position);
             this.renderer = vertImage;
-            this.transferVelocity.set(-1 * random.nextInt(5) - 2, 0);
+            this.transferVelocity.set(-1 * random.nextInt(6) - 2, 0);
 
         } else if (face == 4) {
             this.boxCollider = new BoxCollider(25, 50);
             this.boxCollider.position.set(this.position);
             this.renderer = vertImage;
-            this.transferVelocity.set(random.nextInt(5) + 2, 0);
+            this.transferVelocity.set(random.nextInt(6) + 2, 0);
         } else if (face == 3) {
             this.boxCollider = new BoxCollider(50, 25);
             this.boxCollider.position.set(this.position);
             this.renderer = horiImage;
-            this.transferVelocity.set(0, -1 * random.nextInt(5) - 2);
+            this.transferVelocity.set(0, -1 * random.nextInt(6) - 2);
         } else if (face == 5) {
             this.boxCollider = new BoxCollider(50, 25);
             this.boxCollider.position.set(this.position);
             this.renderer = horiImage;
-            this.transferVelocity.set(0, random.nextInt(5) + 2);
+            this.transferVelocity.set(0, random.nextInt(6) + 2);
         }
     }
 

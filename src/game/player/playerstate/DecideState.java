@@ -10,7 +10,7 @@ public class DecideState {
     private Random random = new Random();
 
     public State run(Player player) {
-        int i = random.nextInt(5) + 1;
+        int i = random.nextInt(4) + 1;
         if (i == 1) {
             Angry angry = new Angry();
             angry.run(player);
