@@ -142,7 +142,7 @@ public class MapConstant {
 
     public static class MapData {
         public static int[] PLAYER_LIFE = {
-                4, 5, 6, 7, 8, 9, 10
+                4, 6, 8, 9, 9, 9, 10
         };
 
         public static int[] COIN_TO_NEXT_LEVEL = {

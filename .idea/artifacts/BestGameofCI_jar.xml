@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="BestGameofCI:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/BestGameofCI_jar</output-path>
+    <root id="archive" name="BestGameofCI.jar">
+      <element id="module-output" name="BestGameofCI" />
+    </root>
+  </artifact>
+</component>

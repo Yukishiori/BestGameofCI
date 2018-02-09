@@ -66,11 +66,12 @@ public class Constant {
 
     public static class PlayerExplosionParticle {
         public static String[] PATHS = {
-                "Assets/playerParticle /New Piskel.png",
-                "Assets/playerParticle /New Piskel (1).png",
-                "Assets/playerParticle /New Piskel (2).png",
-                "Assets/playerParticle /New Piskel (3).png",
-                "Assets/playerParticle /New Piskel (4).png"
+                "Assets/pp/New Piskel.png",
+                "Assets/pp/New Piskel (1).png",
+                "Assets/pp/New Piskel (2).png",
+                "Assets/pp/New Piskel (3).png",
+                "Assets/pp/New Piskel (4).png",
+
         };
     }
 
