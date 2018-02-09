@@ -15,6 +15,7 @@ public class ReplayButton extends GameObject implements PhysicBody {
 
     public ReplayButton() {
         this.renderer = new ImageRenderer("Assets/replay.png");
+        MouseInput.instance.leftMouse = false;
     }
 
     @Override

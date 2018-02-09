@@ -15,6 +15,7 @@ public class StartButton extends GameObject implements PhysicBody {
     public StartButton() {
         this.renderer = new ImageRenderer("Assets/play.png");
         this.position.set(0, 700);
+        MouseInput.instance.leftMouse = false;
     }
 
     @Override
