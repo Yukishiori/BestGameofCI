@@ -89,6 +89,7 @@ public class GameCanvas extends JPanel {
     public void gameOverRun() {
         if (GamePlayScene.playerLife == 0 && GamePlayScene.STAGE > -1) {
             if (frameCounter.run()) {
+                GamePlayScene.SCORE = 0;
                 SceneManager.instance.changeScene(new GameOverScene());
                 frameCounter.reset();
             }
